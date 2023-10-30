@@ -1,0 +1,66 @@
+@import "variables";
+
+.like-link {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  text-decoration: none;
+
+  .like-count {
+    display: inline-block;
+    line-height: 35px;
+    color: darken($border-color, 10%);
+    overflow: hidden;
+    margin-right: 2px;
+  }
+
+  .glyphicon {
+    height: 35px;
+    width: 28px;
+    line-height: 35px;
+    font-size: 26px;
+    overflow: hidden;
+
+    &.glyphicon-heart {
+      color: $second-color;
+    }
+
+    &.glyphicon-heart-empty {
+      color: $border-color;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .glyphicon {
+      &.glyphicon-heart {
+        color: #1C7717;
+      }
+
+      &.glyphicon-heart-empty {
+        color: $second-color;
+      }
+    }
+  }
+}
+
+.caption-buttons {
+  .like-link {
+    float: right;
+    margin-right: 9px;
+  }
+}
+
+.content-buttons {
+  .like-link {
+    float: right;
+    margin-right: 9px;
+  }
+}
+
+.like-link-icon {
+  .tooltip {
+    margin-left: 4px;
+  }
+}

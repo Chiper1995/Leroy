@@ -1,0 +1,112 @@
+[v-cloak] {
+  display: none;
+}
+
+html {
+  height: 100%;
+  background-size: cover;
+  background: url('/css/img/bg.jpg') fixed;
+}
+
+body {
+  min-height: 100%;
+  max-height: none;
+  height: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-sizing: content-box;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+body .container {
+  background: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+label, input, button {
+  font-size: 16px;
+}
+
+h1, h2 {
+  font-family: Lobster, sans-serif;
+  font-weight: 400;
+  color: #333;
+  margin: 0 !important;
+}
+
+h1 {
+  font-size: 36px;
+  padding: 30px 0;
+}
+
+h2 {
+  font-size: 28px;
+  padding: 20px 0;
+}
+
+.answers {
+  margin: 0 0 0 25px;
+  padding: 0;
+  list-style: none;
+}
+
+.answers li {
+  margin-bottom: 10px;
+}
+
+.other-text-block > label{
+  margin-right: 15px;
+}
+
+.text-answer {
+  margin-left: 25px;
+}
+
+.form-inline .checkbox input,
+.form-inline .radio input {
+  margin-right: 8px !important;
+}
+
+.contacts-label {
+  min-width: 280px;
+}
+
+.address-label {
+  min-width: 195px;
+}
+
+.button-block {
+  padding: 30px;
+  border-top: solid 1px #eaeaea
+}
+
+.button-block button {
+  padding: 6px 25px;
+}
+
+label {
+  font-weight: normal;
+}
+
+.radio, .checkbox,
+.form-inline .checkbox, .form-inline .radio {
+  min-height: 20px;
+  padding-left: 20px;
+}
+
+.form-inline .checkbox input[type=checkbox],
+.form-inline .radio input[type=radio] {
+  position: absolute;
+  margin-left: -20px;
+}
+
+span.required {
+  color: #ff0000;
+}
+
+.form-inline input[type=text].form-control {
+  width: 300px;
+}

@@ -1,0 +1,19 @@
+.status-filter {
+  margin-bottom: 20px;
+  text-align: center;
+
+  .status-filter-buttons {
+    @media(max-width:767px) {
+      display: none;
+    }
+  }
+
+  .dropdown a{
+    display: block;
+    max-width: none;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+}

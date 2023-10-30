@@ -1,0 +1,170 @@
+.help-block {
+    font-size: 13px;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox,
+.has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label,
+.has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: #e84e4e;
+}
+
+
+
+/***********************************************************************************/
+
+.content-container .detail-view ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.content-container .detail-view ul li:before {
+    content: "■";
+    color: #4db748;
+    position: relative;
+    top: -2px;
+    padding-right: 5px;
+}
+
+.detail-view ul{
+    margin-bottom: 0;
+}
+
+/***********************************************************************************/
+
+.user-activate .detail-view th {
+    width: 200px;
+}
+
+.tooltip {
+    font-size: 11px;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap .content-container {
+    background: #fff;
+    padding: 15px 15px 20px;
+    border: solid 3px #d2e1ec;
+}
+
+
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+
+/*********************************/
+.btn-danger {
+    background: #d9534f;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #d43f3a;
+    -moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #d43f3a;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #d43f3a;
+    color: #fff;
+}
+
+.btn-success {
+    background: #286090;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #204D74;
+    -moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #204D74;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #204D74;
+    color: #fff;
+}
+
+.btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus,
+.btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus,
+.btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success, .btn-success:focus, .btn-success.focus {
+    background-color: #286090;
+}
+
+.btn-default {
+    background: #E6E6E6;
+    -webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #ADADAD;
+    -moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #ADADAD;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #ADADAD;
+    color: #000;
+}
+
+.btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus,
+.btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus,
+.btn-default:hover, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .btn-default:focus, .btn-default.focus {
+    background-color: #E6E6E6;
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover,
+.btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus,
+.btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus,
+.btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active,
+.btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active,
+.btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+    background-color: #ffcd33;
+    border-color: inherit;
+}

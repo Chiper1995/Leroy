@@ -1,0 +1,17 @@
+.pagination {
+  margin: 0 0 10px 0;
+
+  & > li {
+    & > a, & > span {
+      color: #1C7717;
+    }
+  }
+
+  & .active {
+    & > a, & > a:hover, & > a:focus,
+    & > span, & > span:hover, & > span:focus {
+      background-color: $second-color;
+      border-color: $second-color;
+    }
+  }
+}

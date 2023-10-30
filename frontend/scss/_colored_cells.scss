@@ -1,0 +1,26 @@
+@import "variables";
+
+.colored-cell{
+  border-bottom: 3px solid;
+
+  &.red{
+    color: darken($third-color, 30%);
+    border-bottom-color: $third-color;
+  }
+
+  &.gray {
+    color: darken($border-color, 40%);
+    border-bottom-color: $border-color;
+  }
+
+  &.yellow {
+    color: darken($primary-color, 40%);
+    border-bottom-color: $primary-color;
+  }
+
+  &.green{
+    color: darken($second-color, 30%);
+    border-bottom-color: $second-color;
+  }
+
+}

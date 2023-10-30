@@ -1,0 +1,93 @@
+{
+  "name": "wt/blacksense.ru",
+  "description": "",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "repositories": [
+    {
+      "name": "andr-canandr/yii2-scroll-pager",
+      "url": "https://github.com/andr-canandr/yii2-scroll-pager.git",
+      "type": "vcs"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "v2.0.9",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "bower-asset/jquery": "1.11.*@stable",
+    "bower-asset/respond": "*",
+    "bower-asset/html5shiv": "*",
+    "kartik-v/yii2-widgets": "v3.4.0",
+    "kartik-v/yii2-krajee-base": "v1.7.7",
+    "kartik-v/yii2-widget-activeform": "v1.4.4",
+    "kartik-v/yii2-widget-affix": "v1.0.0",
+    "kartik-v/yii2-widget-alert": "v1.1.0",
+    "kartik-v/yii2-widget-colorinput": "v1.0.0",
+    "kartik-v/yii2-widget-datepicker": "v1.3.3",
+    "kartik-v/yii2-widget-datetimepicker": "v1.4.0",
+    "kartik-v/yii2-widget-depdrop": "v1.0.2",
+    "kartik-v/yii2-widget-fileinput": "v1.0.3",
+    "kartik-v/yii2-widget-growl": "v1.1.1",
+    "kartik-v/yii2-widget-rangeinput": "v1.0.0",
+    "kartik-v/yii2-widget-rating": "v1.0.0",
+    "kartik-v/yii2-widget-select2": "v2.0.3",
+    "kartik-v/yii2-widget-sidenav": "v1.0.0",
+    "kartik-v/yii2-widget-spinner": "v1.0.0",
+    "kartik-v/yii2-widget-switchinput": "v1.3.0",
+    "kartik-v/yii2-widget-timepicker": "v1.0.0",
+    "kartik-v/yii2-widget-touchspin": "v1.2.0",
+    "kartik-v/yii2-widget-typeahead": "v1.0.1",
+    "kartik-v/bootstrap-fileinput": "v4.2.7",
+    "kartik-v/bootstrap-star-rating": "v3.5.4",
+    "kartik-v/dependent-dropdown": "v1.4.3",
+    "beastbytes/yii2-wizard": "v1.0.0",
+    "2amigos/yii2-ckeditor-widget": "1.0.4",
+    "bower-asset/fancybox": "2.1.7",
+    "newerton/yii2-fancybox": "dev-master#46893e3c2d3ae5917c80cfd556e29bc9528c4497",
+    "execut/yii2-base": "1.1.5",
+    "execut/yii2-widget-bootstraptreeview": "1.1.2",
+    "paulzi/yii2-adjacency-list": "v1.0.6",
+    "xj/yii2-bootbox-widget": "v1.0.6",
+    "kartik-v/yii2-datecontrol": "dev-master#84b7163b418a79559b17a046d0e0705e222da78b",
+    "yiisoft/yii2-swiftmailer": "~2.0.0",
+    "tecnickcom/tcpdf": "6.2.12",
+    "webtoucher/yii2-js-cookie": "1.0.0",
+    "phpoffice/phpexcel": "1.8.1",
+    "yiisoft/yii2-sphinx": "^2.0",
+    "phpoffice/phpword": "0.15.0",
+    "yii2tech/html2pdf": "^1.0",
+    "kartik-v/mpdf": "^1.0",
+    "zendframework/zend-escaper": "2.4.13",
+    "andr-canandr/yii2-scroll-pager": "dev-master#84b7163b418a79559b17a046d0e0705e222da78b",
+    "frostealth/yii2-aws-s3": "~1.0@stable"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*"
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  },
+  "__comments__": {
+    "t": "Some of packages were changed",
+    "changed_packages": [
+      "2amigos/yii2-ckeditor-widget",
+      "execut/yii2-widget-bootstraptreeview"
+    ],
+    "t2": "Use: composer update --prefer-dist"
+  }
+}

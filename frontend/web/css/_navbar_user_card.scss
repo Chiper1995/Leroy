@@ -1,0 +1,134 @@
+@import "_css3-mixins";
+
+.navbar-user-card {
+  $img-radius: 96px;
+  $img-margin: 20px;
+
+  .dropdown-menu {
+    overflow: auto;
+    padding: 0;
+    font-size: 15px;
+    width: 420px;
+    background: #ffffff;
+
+    .card-container {
+      background: #ffffff;
+      display: table;
+      width: 100%;
+      height: $img-radius + $img-margin*2;
+      padding: 0;
+      margin: 0;
+
+      // Инфа
+      div.card-info {
+        padding-left: $img-radius + $img-margin*2;
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        @include css3-prefix(box-sizing, border-box);
+
+        @media(max-width:767px) {
+          display: block;
+          padding-left: 9px;
+        }
+
+        p {
+          margin: 0 0 8px 0;
+          line-height: 16px;
+
+          @media(max-width:767px) {
+            text-align: center;
+          }
+
+          &.family-name {
+            font-weight: bold;
+            font-size: 16px;
+          }
+
+          &.name {
+            font-weight: bold;
+            margin: 0;
+          }
+
+          &.login {
+            color: #666;
+            margin: 0 0 2px 0;
+          }
+
+          &.points {
+            position: relative;
+            padding-left: 5px;
+
+            @media(max-width:767px) {
+              padding-bottom: 4px;
+            }
+
+            .glyphicon {
+              color: $primary-color;
+              @include text-shadow(-1px, 0px, 0px, #877203);
+            }
+
+            .caption {
+              position: relative;
+              top: -3px;
+              margin-left: 6px;
+              font-weight: bold;
+            }
+          }
+
+          &.spent {
+            margin: 0 0 6px 0;
+          }
+        }
+      }
+
+      // Фото
+      .im {
+        position: absolute;
+        left: $img-margin;
+        top: $img-margin;
+
+        @media(max-width:767px) {
+          position: static;
+          text-align: center;
+          padding: 12px;
+        }
+
+        img {
+          width: $img-radius;
+          height: $img-radius;
+        }
+
+        div.img-circle {
+          @extend img;
+          background: $border-color;
+          text-align: center;
+
+          @media(max-width:767px) {
+            display: inline-block;
+          }
+
+          .glyphicon {
+            color: #ffffff;
+            font-size: $img-radius*2/3.1;
+            margin-top: ($img-radius - $img-radius*2/3)/2 - 3px;
+          }
+        }
+      }
+
+    }
+
+    div.buttons {
+      background: #F6F6F6;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 3px 8px 7px 8px;
+
+      .btn-primary {
+        font-size: 16px;
+        padding: 4px 23px 4px;
+        margin-top: 3px;
+      }
+    }
+
+  }
+}

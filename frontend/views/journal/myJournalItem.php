@@ -1,0 +1,113 @@
+<?php
+
+/* @var $this yii\web\View */
+/**@var Journal $model*/
+/* @var $viewOnly bool */
+/* @var $showAuthor bool */
+
+use common\models\Journal;
+use common\rbac\Rights;
+use frontend\helpers\MonthHelper;
+use yii\bootstrap\Html;
+use yii\helpers\Url;
+use frontend\widgets\LikeLink\LikeLink;
+use frontend\widgets\GiveGiftLink\GiveGiftLink;
+
+if (($model->status == Journal::STATUS_ON_CHECK)
+    && ((Yii::$app->user->can(Rights::SHOW_JOURNAL_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+        || (Yii::$app->user->can(Rights::SHOW_JOURNAL_BY_TASK_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+    )) {
+    $roleUrl = 'journal/check';
+} else {
+    $roleUrl = 'journal/view';
+}
+?>
+
+<div class="thumbnail" >
+    <?php if (!$viewOnly):?>
+        <?php switch($model->status) {
+            case Journal::STATUS_DRAFT: echo Html::tag('div', 'ЧЕРНОВИК', ['class'=>'status-badge right gray']); break;
+            case Journal::STATUS_ON_CHECK:
+                echo Html::tag('div', 'НА ПРОВЕРКЕ', ['class'=>'status-badge right yellow']);
+                if (!empty($model->return_reason)) {
+                    echo Html::tag('div', 'ОТРЕДАКТИРОВАНО', ['class'=>'status-badge right down red']);
+                }
+                break;
+            case Journal::STATUS_PUBLISHED:
+                if (count($model->getOnCheckPhotos()) > 0)
+                    echo Html::tag('div', 'НОВЫЕ ФОТО', ['class'=>'status-badge right yellow']);
+                else
+                    echo Html::tag('div', 'ОПУБЛИКОВАНА', ['class'=>'status-badge right green']);
+                break;
+        }?>
+    <?php endif;?>
+        <?= Html::tag('div', '<span class="day">'.date('d', $model->updated_at).'</span><span>'.MonthHelper::getMonth(intval(date('m', $model->updated_at))).'</span><span class="year">'.date('Y', $model->updated_at).'</span>', ['class'=>'date-badge']); ?>
+        <a href="<?= Url::to([$roleUrl, 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url])?>">
+            <?php $photosForThumb = $model->status == Journal::STATUS_PUBLISHED ? $model->getPublishedPhotos() : $model->photos; ?>
+            <?php if (count($photosForThumb) > 0) {
+                echo Html::img($photosForThumb[0]->getPhotoThumb(360, 270));
+            }
+            else {
+                echo Html::img('files/no_photo.gif');
+            }
+            ?>
+        </a>
+
+    <div class="caption">
+        <?php if ($showAuthor):?>
+            <?php if (\Yii::$app->user->can(Rights::SHOW_FAMILY_JOURNAL, ['user'=>$model->user])):?>
+                <p><?= Html::a(Html::icon('user'). Html::encode($model->user->fio), ['journal/family-journal', 'id'=>$model->user->id,], ['class'=>'dark'])?></p>
+            <?php else:?>
+                <p class="caption-with-icon"><?= Html::icon('user').Html::encode($model->user->fio)?></p>
+            <?php endif;?>
+        <?php endif;?>
+        <h2><a href="<?= Url::to([$roleUrl, 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url])?>"><?= Html::encode($model->subject)?></a></h2>
+        <div class="caption-buttons">
+            <?php if (Yii::$app->user->can(Rights::EDIT_JOURNAL, ['journal'=>$model])):?>
+                <?= Html::a(Html::icon('pencil').'<span class="title">Редактировать</span>', ['journal/update', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url], ['class'=>'thumbnail-link'])?>
+                <?= Html::a(Html::icon('trash').'<span class="title">Удалить</span>', ['journal/delete', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url], ['class'=>'thumbnail-link', 'data-confirm'=>'Вы уверены, что хотите удалить эту запись?', 'data-method'=>'post', 'data-pjax'=>'0'])?>
+            <?php endif;?>
+
+            <?php if (
+                ($model->status == Journal::STATUS_ON_CHECK)
+                and(
+                    (Yii::$app->user->can(Rights::SHOW_JOURNAL_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+                    or (Yii::$app->user->can(Rights::SHOW_JOURNAL_BY_TASK_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+                )
+            ):?>
+                <?= Html::a(Html::icon('ok').'<span class="title">Проверить</span>', ['journal/check', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url], ['class'=>'thumbnail-link'])?>
+            <?php endif;?>
+            <?php if (
+                ($model->status == Journal::STATUS_PUBLISHED)
+                and (count($model->getOnCheckPhotos()) > 0)
+                and (
+                    (Yii::$app->user->can(Rights::SHOW_JOURNAL_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+                    or (Yii::$app->user->can(Rights::SHOW_JOURNAL_BY_TASK_ON_CHECK_NOTIFICATION, ['journal'=>$model]))
+                )
+            ):?>
+                <?= Html::a(Html::icon('ok').'<span class="title">Проверить</span>', ['journal/check-photo', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url], ['class'=>'thumbnail-link'])?>
+            <?php endif;?>
+
+            <?php GiveGiftLink::registerClientScriptForList($this, ['selector' => '.give-gift-btn']) ?>
+            <?php if ($model->status == Journal::STATUS_PUBLISHED && Yii::$app->user->can(Rights::GIVE_GIFT, []) && Yii::$app->user->id !== $model->user_id): ?>
+                <?= GiveGiftLink::widget([
+                    'selector' => '.give-gift-btn',
+                    'url' => ['/user/give-gift'],
+                    'journalId' => $model->id,
+                    'options' => [
+                        'class' => 'thumbnail-link',
+                    ],
+                ]) ?>
+            <?php endif;?>
+
+            <?php if ($model->status == Journal::STATUS_PUBLISHED): ?>
+                <?= LikeLink::widget([
+                    'selector' => '.like-link',
+                    'likeCount' => $model->getLikeUsersCount(),
+                    'likeIt' => $model->currentUserLikeIt(),
+                    'url' => ['/journal/like-it', 'id' => $model->id],
+                ]) ?>
+            <?php endif;?>
+        </div>
+    </div>
+</div>

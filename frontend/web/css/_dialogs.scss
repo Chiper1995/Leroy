@@ -1,0 +1,276 @@
+@import "_css3-mixins";
+@import "_variables";
+
+.create-dialog-btn-container {
+  text-align: right;
+
+  /* Small Devices, .visible-sm-* */
+  @media (max-width: 768px) {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}
+
+.add-dialog-form {
+  min-height: 474px;
+}
+
+// Список выбора адресатов
+.dialog-users-select {
+  $img-radius: 32px;
+
+  img {
+    width: $img-radius;
+    height: $img-radius;
+  }
+
+  div.img-circle {
+    @extend img;
+    background: $border-color;
+    text-align: center;
+
+    .glyphicon {
+      color: #ffffff;
+      font-size: $img-radius*2/3.1;
+      margin-top: ($img-radius - $img-radius*2/3)/2 - 1px;
+    }
+  }
+
+  .media-body {
+    font-size: 14px;
+    line-height: 17px;
+
+    span {
+      color: lighten($text-color, 40);
+    }
+  }
+}
+
+// Список диалогов
+.dialog-list {
+  margin-top: 8px;
+  margin-bottom: -16px;
+  overflow: hidden;
+}
+
+// Строка диалога в списке
+.dialog-item {
+  border-bottom: solid 1px $border-color;
+  font-size: 14px;
+  line-height: 15px;
+
+  &:hover {
+    background: lighten($second-color, 45);
+  }
+
+  & > a {
+    padding: 8px;
+    display: block;
+    color: $text-color;
+    text-decoration: none;
+
+    & *{
+      text-decoration: none;
+    }
+  }
+
+  & > a > .media-left {
+    $img-radius: 60px;
+
+    img {
+      width: $img-radius;
+      height: $img-radius;
+    }
+
+    div.img-circle {
+      @extend img;
+      background: $border-color;
+      text-align: center;
+
+      .glyphicon {
+        color: #ffffff;
+        font-size: $img-radius*2/3.1;
+        margin-top: ($img-radius - $img-radius*2/3)/2 - 1px;
+      }
+    }
+  }
+
+  .dialog-subject {
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: -4px;
+    font-weight: bold;
+  }
+
+  .dialog-user-count {
+    color: lighten($text-color, 40);
+  }
+
+  .dialog-last-message {
+    margin-top: 1px;
+    padding: 1px 6px 6px 6px;
+
+    &.new {
+      background: lighten($second-color, 38);
+    }
+
+    & > .media {
+      padding-bottom: 2px;
+
+      & > .media-left {
+        $img-radius: 32px;
+
+        height: 32px;
+
+        img {
+          width: $img-radius;
+          height: $img-radius;
+          margin-top: 2px;
+          position: relative;
+          top: 2px;
+        }
+
+        div.img-circle {
+          @extend img;
+          background: $border-color;
+          text-align: center;
+
+          .glyphicon {
+            color: #ffffff;
+            font-size: $img-radius*2/3.1;
+            margin-top: ($img-radius - $img-radius*2/3)/2 - 1px;
+          }
+        }
+      }
+    }
+  }
+
+  .dialog-last-message-time {
+    color: lighten($text-color, 40);
+    font-size: 13px;
+    height: 12px;
+    margin-top: -1px;
+  }
+
+  .dialog-last-message-text {
+    height: 23px;
+    overflow: hidden;
+    line-height: 23px;
+  }
+
+  .dialog-desc {
+    line-height: 18px;
+    margin-top: 6px;
+  }
+}
+
+.dialog-header {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.message-author {
+  font-weight: bold;
+}
+
+.message-time {
+  color: lighten($text-color, 40);
+  text-align: right;
+
+  @media(max-width:767px) {
+    text-align: left;
+  }
+}
+
+.message-messages {
+  margin-bottom: -10px;
+  overflow: hidden;
+}
+
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message-item {
+  padding: 8px;
+
+  & > .media-left {
+    $img-radius: 60px;
+
+    img {
+      width: $img-radius;
+      height: $img-radius;
+    }
+
+    div.img-circle {
+      @extend img;
+      background: $border-color;
+      text-align: center;
+
+      .glyphicon {
+        color: #ffffff;
+        font-size: $img-radius*2/3.1;
+        margin-top: ($img-radius - $img-radius*2/3)/2 - 1px;
+      }
+    }
+  }
+}
+
+.add-message-form {
+  margin-top: 7px;
+  padding-top: 10px;
+  border-top: dashed 3px $border-color;
+}
+
+.dialog-users-list {
+  overflow: hidden;
+  max-height: 184px;
+  @include box-sizing(border-box);
+
+  ul {
+    list-style: none;
+    margin-top: 15px;
+    margin-left: -10px;
+    padding: 0;
+
+    /* Extra Small Devices, .visible-xs-* */
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+
+    /* Small Devices, .visible-sm-* */
+    @media (min-width: 768px) and (max-width: 991px) {
+      margin-top: 0;
+    }
+
+    li {
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  $img-radius: 32px;
+
+  img {
+    width: $img-radius;
+    height: $img-radius;
+  }
+
+  div.img-circle {
+    @extend img;
+    background: $border-color;
+    text-align: center;
+
+    .glyphicon {
+      color: #ffffff;
+      font-size: $img-radius*2/3.1;
+      margin-top: ($img-radius - $img-radius*2/3)/2 - 1px;
+    }
+  }
+
+}

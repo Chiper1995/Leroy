@@ -1,0 +1,47 @@
+@import "css3-mixins";
+@import "variables";
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  padding: 6px 10px;
+  color: $text-color;
+  line-height: 16px;
+  z-index: 100;
+
+  &.left {
+    left: -4px;
+    @include box-shadow(2px, 2px, 5px, rgba(0,0,0,.4));
+
+    .thumbnail & {
+      left: -2px;
+    }
+  }
+
+  &.right {
+    right: -4px;
+    @include box-shadow(-2px, 2px, 5px, rgba(0,0,0,.4));
+
+    .thumbnail & {
+      right: -2px;
+    }
+  }
+
+  &.red {
+    background: #ef3a47;
+    color: $light-text-color;
+  }
+
+  &.gray {
+    background: $border-color;
+  }
+
+  &.yellow {
+    background: $primary-color;
+  }
+
+  &.green {
+    background: $second-color;
+    color: $light-text-color;
+  }
+}

@@ -1,0 +1,248 @@
+@import "_css3-mixins";
+
+.navbar {
+  background-color: #fff;
+  border-color: #fff;
+  border-width: 0;
+
+  .tooltip {
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+}
+
+.first-navbar {
+  margin-bottom: 0;
+
+  .glyphicon {
+    font-size: 26px;
+    position: relative;
+    top: 4px;
+
+    @at-root .first-navbar .help-link .glyphicon {
+      font-size: 30px;
+    }
+  }
+
+  .navbar-nav {
+    margin: 0!important;
+
+    & > li > a {
+      line-height: 49px;
+      font-size: 28px;
+    }
+
+    @media (max-width: 767px) {
+      .open .dropdown-menu {
+        position: absolute;
+        left: 0;
+        background-color: #f2f3f4;
+        width: 100%;
+        @include box-shadow(-12px, 6px, 12px, rgba(0, 0, 0, .175));
+      }
+    }
+  }
+
+  .navbar-collapse {
+    background: url("/css/img/families-logo-75.png") no-repeat 50% 3px;
+
+    @media(max-width:992px) {
+      background: none;
+    }
+
+    @media(max-width:767px) {
+      background: none;
+    }
+  }
+}
+
+.first-navbar .navbar-nav > .active > a, .first-navbar .navbar-nav > .active > a:hover, .first-navbar .navbar-nav > .active > a:focus {
+  background: #ffdd2e;
+  color: #745209;
+}
+
+.first-navbar .navbar-nav > .open > a, .first-navbar .navbar-nav > .open > a:hover, .first-navbar .navbar-nav > .open > a:focus {
+  background: #ffdd2e;
+  color: #745209;
+}
+
+.first-navbar .navbar-nav > li > a:hover, .first-navbar .navbar-nav > li > a:focus {
+  background: #ffdd2e;
+  color: #745209;
+}
+
+/** disable collapsing **/
+.first-navbar .navbar-collapse.collapse {
+  display: block!important;
+}
+
+.first-navbar .navbar-nav>li, .first-navbar .navbar-nav {
+  float: left!important;
+  @media (max-width: 767px) {
+    position: static;
+  }
+}
+
+.first-navbar .navbar-nav.navbar-right:last-child {
+  margin-right: -15px!important;
+}
+
+.first-navbar .navbar-right {
+  float: right!important;
+}
+
+.first-navbar .navbar-header {
+  float: left!important;
+}
+
+.first-navbar .nav > li > a {
+  padding-top: 15px!important;
+  padding-bottom: 15px!important;
+}
+/** END disable collapsing **/
+
+.navbar-inverse {
+  background-color: $second-color;
+  border-color: $second-color;
+  margin-bottom: 60px;
+
+  .navbar-nav > li {
+    & > a {
+      padding-left: 12px;
+      padding-right: 12px;
+      color: #fff;
+      @include transition('background 0.3s linear, color 0.3s linear');
+
+      &:hover {
+        background-color: #1C7717;
+      }
+    }
+
+    &.active > a, &.active > a:hover, &.active > a:focus,
+    &.open > a, &.open > a:hover, &.open > a:focus{
+      background-color: #1C7717;
+    }
+
+    &.open .dropdown-menu {
+      @media (max-width: 767px) {
+        & > li > a {
+          color: #fff;
+
+          &:hover {
+            background-color: #1C7717;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: #1C7717;
+
+    &:hover, &:focus {
+      background-color: #1C7717;
+    }
+  }
+
+  .navbar-collapse, .navbar-form {
+    border-color: transparent;
+  }
+
+  .fa {
+    font-size: 17px;
+  }
+
+  .tooltip {
+    word-break: keep-all;
+    white-space: nowrap;
+    visibility: hidden;
+
+    @media(min-width:768px) {
+      visibility: visible;
+    }
+
+    @media(min-width:992px) {
+      visibility: hidden;
+    }
+
+    @media(min-width:1200px) {
+      visibility: hidden;
+    }
+  }
+
+  .navbar-collapse {
+    background: none;
+
+    @media(max-width:992px) {
+      background: url("/css/img/families-logo-50.png") no-repeat 23px 3px;
+    }
+
+    @media(max-width: 767px) {
+      background-image: none;
+    }
+  }
+
+  .navbar-header {
+    @media(max-width:767px) {
+      background: url("/css/img/families-logo-50.png") no-repeat 37px 3px;
+    }
+  }
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+  background-color: #4db748;
+}
+
+.breadcrumbs-bar {
+  background-color: #f2f3f4;
+
+  .breadcrumbs-bar-inner {
+    padding-left: 220px;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+
+    @media (max-width: 767px) {
+      padding-left: 130px;
+    }
+
+    .breadcrumb {
+      padding: 0;
+      background-color: transparent;
+
+      a {
+        color: #1C7717;
+      }
+
+      & > .active {
+        color: #1C7717;
+      }
+
+      & > li + li:before {
+        color: #1C7717;
+        content: "\2192\00a0";
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  position: relative;
+
+  img{
+    position: absolute;
+    top: -26px;
+
+    @media(max-width:992px) {
+      top: -20px;
+      width: 100px;
+      z-index: 5000;
+    }
+
+    @media (max-width: 767px) {
+      top: -20px;
+      width: 100px;
+      z-index: 5000;
+    }
+  }
+}

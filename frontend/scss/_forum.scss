@@ -1,0 +1,154 @@
+@import "_css3-mixins";
+@import "_variables";
+
+.forum-theme-table {
+  display: table;
+  width: 100%;
+  border-bottom: $main-border;
+  border-left: $main-border;
+  border-right: $main-border;
+}
+
+.forum-theme-table-header {
+  display: table-row;
+  color: lighten($text-color, 25);
+  background: $border-color;
+
+  & > div {
+    display: table-cell;
+    padding-top: 3px;
+    float: none;
+  }
+}
+
+.forum-theme-table-row {
+  display: table-row;
+  background-color: #ffffff;
+  line-height: 17px;
+  height: 60px;
+
+  & > div {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+    position: relative;
+
+    border-top: $main-border;
+  }
+
+  a {
+    font-weight: bold;
+  }
+
+  .desc {
+    color: lighten($text-color, 30);
+    font-size: 12px;
+  }
+
+  .column-with-buttons {
+    padding-right: 33px;
+  }
+
+  .edit-buttons {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+  $img-radius: 40px;
+  $img-margin: 8px;
+
+  .im {
+    position: absolute;
+    left: $img-margin;
+    top: $img-margin;
+
+    img {
+      width: $img-radius;
+      height: $img-radius;
+    }
+
+    div.img-circle {
+      @extend img;
+      background: $border-color;
+      text-align: center;
+
+      .fa {
+        color: #ffffff;
+        font-size: $img-radius*2/3;
+        margin-top: ($img-radius - $img-radius*2/3)/2;
+      }
+    }
+  }
+
+  .column-with-icon {
+    padding-left: $img-radius+$img-margin*2+$img-margin;
+  }
+}
+
+.forum-messages-thumbnails {
+  $img-radius: 96px;
+  $img-margin: 10px;
+
+  .user-info {
+    border-left: solid 1px $border-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .list-view > div:nth-child(even) .thumbnail{
+    background: lighten($border-color, 11);
+  }
+
+  .thumbnail {
+    border: solid 3px $border-color;
+    @include border-radius(0);
+
+    // Фото
+    .im {
+      margin-bottom: 10px;
+
+      img {
+        width: $img-radius;
+        height: $img-radius;
+      }
+
+      div.img-circle {
+        @extend img;
+        background: $border-color;
+        text-align: center;
+
+        @media(max-width:767px) {
+          display: inline-block;
+        }
+
+        .glyphicon {
+          color: #ffffff;
+          font-size: $img-radius*2/3.1;
+          margin-top: ($img-radius - $img-radius*2/3)/2 - 3px;
+        }
+      }
+    }
+  }
+
+  .forum-message-row {
+    h2 {
+      margin-bottom: 3px;
+    }
+
+    .message-info {
+      margin-bottom: 12px;
+      font-size: 85%;
+    }
+
+    .message-content {
+      word-wrap: break-word;
+    }
+  }
+
+}
+
+.forum-create-message-container {
+  border: solid 3px $border-color;
+  background: #fff;
+}

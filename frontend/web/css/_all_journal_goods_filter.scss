@@ -1,0 +1,54 @@
+@import "_css3-mixins";
+@import "_variables";
+
+.all-journal-goods {
+  position: relative;
+
+
+  .well {
+    background-color: white;
+
+    min-height: 41px;
+    overflow: hidden;
+  }
+
+  .open-all-journal-goods-select-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  ul {
+    padding: 0;
+    margin: -6px 22px -1px -7px;
+    overflow: hidden;
+    list-style: none;
+
+    li{
+      float: left;
+      list-style: none;
+      padding: 0 6px;
+      margin: 5px 0 0 6px;
+      color: #555555;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+
+  .goods-delete {
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px;
+  }
+
+  .prompt {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: lighten($text-color, 40);
+  }
+}

@@ -1,0 +1,23 @@
+@import "variables";
+
+.subscribe-link {
+  text-transform: lowercase;
+  line-height: 1;
+  border-radius: 2px;
+  vertical-align: middle;
+  color: $second-color;
+  background-color: #fff;
+  border: 1px solid $second-color;
+  padding: 3px 7px;
+  display: inline-block;
+  font-size: 12px;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  &.subscribed-it {
+    background-color: $second-color;
+    color: #fff;
+  }
+}

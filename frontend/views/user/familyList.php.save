@@ -1,0 +1,387 @@
+<?php
+
+use common\models\staticLists\Bool;
+use common\models\User;
+use common\rbac\Rights;
+use yii\bootstrap\Html;
+use yii\grid\GridView;
+use yii\helpers\Url;
+use frontend\widgets\FamilyLocations\FamilyLocations;
+
+/* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $searchModel frontend\models\user\FamilySearch */
+
+$this->title = 'Семьи';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-md-8">
+            <div class="btn-toolbar pull-right">
+                <?php if(Yii::$app->user->can(Rights::SHOW_FAMILY_LOCATIONS, [])):?>
+                    <?= Html::a('Семьи на карте', ['locations'], ['class' => 'btn btn-primary']) ?>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+
+    <?php \yii\widgets\Pjax::begin(['id'=>'family-grid-pjax']); ?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            [
+                'attribute' => 'id',
+                'headerOptions' => [
+                    'style' => 'width: 80px;'
+                ]
+            ],
+            [
+                'attribute' => 'status',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $s = User::getStatusList();
+                    $sc = [User::STATUS_ACTIVE=>'green', User::STATUS_NEW=>'red', User::STATUS_END_REPAIR=>'gray'];
+                    return Html::tag('span', $s[$model->status], ['class'=>'colored-cell '.$sc[$model->status]]);
+                },
+                'filter' => \kartik\widgets\Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'status',
+                    'data' => User::getStatusList(),
+                    'pluginOptions' => ['allowClear' => false,],
+                    'options' => ['multiple' => true],
+                ]),
+                'headerOptions' => [
+                    'style' => 'width: 100px;'
+                ]
+            ],
+	    [
+		'attribute' => 'created_at',
+		'format' => 'raw',
+		'value' => function(User $model) {return ($l = $model->created_at) === null ? '' : Yii::$app->formatter->asDate($l);},
+		'headerOptions' => [
+			'style' => 'width: 80px;'
+		]
+	    ],
+            [
+				'attribute' => 'fio',
+				'format' => 'raw',
+				'value' => function(User $model) {
+					if ($model->status == User::STATUS_NEW) {
+						if (Yii::$app->user->can(Rights::SHOW_NEW_USER_REGISTER_NOTIFICATION, ['user'=>$model])) {
+							$options = [
+								'title' => Yii::t('yii', 'Активация'),
+								'aria-label' => Yii::t('yii', 'Активация'),
+								'data' => ['pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top',],
+							];
+
+							$url = Url::to(['user/activate', 'id' => $model->id, 'returnUrl' => Yii::$app->request->url]);
+
+							return Html::a(Html::encode($model->fio), $url, $options);
+						}
+						else {
+							return Html::encode($model->fio);
+						}
+					}
+					else {
+						$options = [
+							'title' => Yii::t('yii', 'View'),
+							'aria-label' => Yii::t('yii', 'View'),
+							'data' => ['pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top',],
+						];
+
+						$url = Url::to(['user/family-view', 'id' => $model->id, 'returnUrl' => Yii::$app->request->url]);
+
+						return Html::a(Html::encode($model->fio), $url, $options);
+					}
+				},
+			],
+			[
+				'attribute' => 'username',
+				'visible' => false,//\Yii::$app->user->can(Rights::SHOW_ID_COLUMNS), // TODO Добавить отдельно право на это
+			],
+			[
+				'attribute' => 'email',
+				'visible' => \Yii::$app->user->can(Rights::SHOW_FAMILIES_PERSONAL_DATA),
+			],
+            [
+				'attribute' => 'phone',
+				'visible' => \Yii::$app->user->can(Rights::SHOW_FAMILIES_PERSONAL_DATA),
+			],
+            [
+                'format' => 'html',
+                'header' => 'Город',
+                'value' => function(User $model) {return implode(',<br/>', \yii\helpers\ArrayHelper::getColumn($model->cities, 'name'));},
+                'filter' => \kartik\widgets\Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'city_id',
+                    'data' => \common\models\City::getList(),
+                    'pluginOptions' => ['allowClear' => false,],
+                    'options' => ['multiple' => true],
+                ]),
+                'headerOptions' => [
+                    'style' => 'width: 180px;'
+                ],
+				'visible' => \Yii::$app->user->can(Rights::SHOW_FAMILIES_PERSONAL_DATA),
+            ],
+            [
+                'format' => 'html',
+                'header' => 'Объект ремонта',
+                'value' => function(User $model) {return implode(',<br/>', \yii\helpers\ArrayHelper::getColumn($model->repairObjects, 'name'));},
+                'filter' => \kartik\widgets\Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'object_repair_id',
+                    'data' => \common\models\ObjectRepair::getList(),
+                    'pluginOptions' => ['allowClear' => false,],
+                    'options' => ['multiple' => true],
+                ]),
+                'headerOptions' => [
+                    'style' => 'width: 180px;'
+                ]
+            ],
+            [
+                'attribute' => 'points',
+                'label' => 'Баллы',
+                'format' => 'raw',
+                'content' => function (User $model) {
+                    if (Yii::$app->user->can(Rights::SPEND_POINTS, []) || Yii::$app->user->can(Rights::EARN_POINTS, [])) {
+
+                        $reduceBtn = '';
+                        if (Yii::$app->user->can(Rights::SPEND_POINTS, []))
+                            $reduceBtn = Html::a(Html::tag('i', '', ['class' => 'fa fa-minus']), '#',
+                                [
+                                    'title' => 'Списать баллы',
+                                    'class' => 'btn btn-primary btn-xs reduce-btn',
+                                    'data' => [
+                                        'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'target' => '#reduceModal',
+                                        'id' => $model->id
+                                    ],
+                                ]
+                            );
+
+                        $increaseBtn = '';
+                        if (Yii::$app->user->can(Rights::EARN_POINTS, []))
+                            $increaseBtn = Html::a(Html::tag('i', '', ['class' => 'fa fa-plus']), '#',
+                                [
+                                    'title' => 'Начислить баллы',
+                                    'class' => 'btn btn-primary btn-xs increase-btn',
+                                    'data' => [
+                                        'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'target' => '#increaseModal',
+                                        'id' => $model->id
+                                    ],
+                                ]
+                            );
+
+                        return
+                            Html::tag('div',
+                                $model->points .
+                                $reduceBtn .
+                                $increaseBtn,
+                                ['class'=>'points-content']
+                            );
+                    }
+                    else {
+                        return $model->points;
+                    }
+                },
+            ],
+            [
+                'attribute' => 'curator.fio',
+                'filter' => \kartik\widgets\Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'curator_id',
+                    'data' => \common\models\User::getCuratorsList(),
+                    'pluginOptions' => ['allowClear' => false,],
+                    'options' => ['multiple' => true],
+                ]),
+                'content' => function (User $model) {
+                    $curatorData = $model->curator instanceof User ? Html::encode($model->curator->fio) : '<span class="not-set">(не задано)</span>';
+
+                    $setCuratorBtn = '';
+                    if (Yii::$app->user->can(Rights::FAMILY_SET_CURATOR, []))
+                        $setCuratorBtn = Html::a(Html::tag('i', '', ['class' => 'fa fa-user']), '#',
+                            [
+                                'title' => 'Назначить куратора',
+                                'class' => 'btn btn-primary btn-xs set-curator-btn',
+                                'data' => [
+                                    'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'target' => '#setCuratorModal',
+                                    'id' => $model->id,
+                                    'curator-id' => $model->curator instanceof User ? $model->curator->id : '',
+                                ],
+                            ]
+                        );
+
+                    return
+                        Html::tag('div',
+                            $curatorData .
+                            $setCuratorBtn,
+                            ['class'=>'curator-content']
+                        );
+                },
+                'headerOptions' => [
+                    'style' => 'width: 200px;'
+                ],
+            ],
+			[
+				'attribute' => 'lastPublishedJournalDate',
+				'format' => 'raw',
+				'value' => function(User $model) {return ($l = $model->lastPublishedJournalDate) === null ? '' : Yii::$app->formatter->asDate($l);},
+				'headerOptions' => [
+					'style' => 'width: 80px;'
+				]
+			],
+            [
+                'class' => \common\components\grid\BoolColumn::className(),
+                'attribute' => 'is_prof',
+				'content' => function (User $model) {
+					$setProfStatusBtn = '';
+					if (Yii::$app->user->can(Rights::FAMILY_SET_PROF_STATUS, [])) {
+						$setProfStatusBtn = Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-education']),
+							Url::to(['user/set-prof-status', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url]),
+							[
+								'title' => Yii::t('yii', 'Профи'),
+								'aria-label' => Yii::t('yii', 'Профи'),
+								'class' => 'btn btn-primary btn-xs set-prof-status-btn',
+								'data' => [
+									'method' => 'post',
+									'pjax' => '0',
+									'toggle' => 'tooltip',
+									'placement' => 'top',
+									'confirm' => 'Вы уверены, что хотите ' . ($model->is_prof ? 'убрать' : 'установить') . ' статус "Профи" у этого пользователя?'
+								],
+							]
+						);
+					}
+
+					return
+						Html::tag('div',
+							Bool::getName($model->is_prof) . $setProfStatusBtn,
+							['class' => 'prof-status-content']
+						);
+				},
+            ],
+            [
+                'class' => \yii\grid\ActionColumn::className(),
+                'template'=>'{delete}{set-end-repair-status}{set-prof-status}{reset-password}{login-as}',
+                'urlCreator' => function ($action, User $model, $key, $index) {
+                    if ($action=='view')
+                        if (($model->status == User::STATUS_NEW)and(Yii::$app->user->can(Rights::SHOW_NEW_USER_REGISTER_NOTIFICATION, ['user'=>$model])))
+                            $action = 'user/activate';
+                        else
+                            $action = 'family-view';
+
+                    $params = is_array($key) ? $key : ['id' => (string) $key];
+                    $params['returnUrl'] = Yii::$app->request->url;
+                    $params[0] = $action;
+
+                    return Url::toRoute($params);
+                },
+                'buttons' => [
+                    'set-end-repair-status' => function ($url, User $model, $key) {
+                        if (($model->status == User::STATUS_ACTIVE) && (\Yii::$app->user->can(Rights::FAMILY_SET_END_REPAIR_STATUS))) {
+                            $options = [
+                                'title' => Yii::t('yii', 'Ремонт окончен'),
+                                'aria-label' => Yii::t('yii', 'Ремонт окончен'),
+                                'data' => ['method'=>'post', 'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'confirm'=>'Вы уверены, что хотите установить статус "Ремонт окончен" у этого пользователя?'],
+                                'class' => 'grid-button'
+                            ];
+
+                            $url = Url::to(['user/set-end-repair-status', 'id'=>$model->id, 'returnUrl'=>Yii::$app->request->url]);
+
+                            return Html::a('<span class="glyphicon glyphicon-check"></span>', $url, $options);
+                        }
+                        else  {
+                            return '';
+                        }
+                    },
+                    'delete' => function ($url, $model, $key) {
+                        if (\Yii::$app->user->can(Rights::DELETE_FAMILIES)) {
+                            $options = [
+                                'title' => Yii::t('yii', 'Delete'),
+                                'aria-label' => Yii::t('yii', 'Delete'),
+                                'data' => ['method'=>'post', 'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'confirm'=>'Вы уверены, что хотите удалить этот элемент?'],
+                                'class' => 'grid-button'
+                            ];
+                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+                        }
+                        else {
+                            return '';
+                        }
+                    },
+                    'reset-password' => function ($url, $model, $key) {
+                        if (\Yii::$app->user->can(Rights::FAMILY_RESET_PASSWORD)) {
+                            $options = [
+                                'title' => 'Сбросить пароль',
+                                'aria-label' => 'Сбросить пароль',
+                                'data' => ['method'=>'post', 'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'confirm'=>'Вы уверены, что хотите сбросить пароль?'],
+                                'class' => 'grid-button'
+                            ];
+                            return Html::a('<span class="glyphicon glyphicon-flash"></span>', $url, $options);
+                        }
+                        else {
+                            return '';
+                        }
+                    },
+                    'login-as' => function ($url, $model, $key) {
+                        if (\Yii::$app->user->can(Rights::USER_LOGIN_AS)) {
+                            $options = [
+                                'title' => 'Войти как этот пользователь',
+                                'aria-label' => 'Войти как этот пользователь',
+                                'data' => ['method'=>'post', 'pjax' => '0', 'toggle' => 'tooltip', 'placement' => 'top', 'confirm'=>'Вы уверены, что хотите войти как этот пользователь?'],
+                                'class' => 'grid-button'
+                            ];
+                            return Html::a('<span class="glyphicon glyphicon-sunglasses"></span>', $url, $options);
+                        }
+                        else {
+                            return '';
+                        }
+                    },
+                ],
+				'visible' =>
+					\Yii::$app->user->can(Rights::FAMILY_SET_END_REPAIR_STATUS)
+					|| \Yii::$app->user->can(Rights::DELETE_FAMILIES)
+					|| \Yii::$app->user->can(Rights::FAMILY_RESET_PASSWORD)
+					|| \Yii::$app->user->can(Rights::USER_LOGIN_AS)
+            ],
+        ],
+    ]); ?>
+    <?php \yii\widgets\Pjax::end(); ?>
+
+    <?= $this->render('__modal_reduce_points', ['model'=>null]) ?>
+    <?= $this->render('__modal_increase_points', ['model'=>null]) ?>
+    <?= $this->render('__modal_set_curator', ['model'=>null]) ?>
+</div>
+<?php $this->registerJs(
+    '$("body").on("click", ".reduce-btn", function() {
+        $("#reduceModal").attr("data-family-id", $(this).attr("data-id"));
+        $("#reduce-form").attr("method", "GET");
+        $("#reduce-form").html("");
+        $("#reduce-form").submit();
+        $("#reduceModal").modal();
+        return false;
+    });');?>
+
+<?php $this->registerJs(
+    '$("body").on("click", ".increase-btn", function() {
+        $("#increaseModal").attr("data-family-id", $(this).attr("data-id"));
+        $("#increase-form").attr("method", "GET");
+        $("#increase-form").html("");
+        $("#increase-form").submit();
+        $("#increaseModal").modal();
+        return false;
+    });');?>
+
+<?php $this->registerJs(
+    '$("body").on("click", ".set-curator-btn", function() {
+        $("#setCuratorModal").attr("data-family-id", $(this).attr("data-id"));
+        $("#setCuratorModal").attr("data-curator-id", $(this).attr("data-curator-id"));
+        $("#set-curator-form").attr("method", "GET");
+        $("#set-curator-form").html("");
+        $("#set-curator-form").submit();
+        $("#setCuratorModal").modal();
+        return false;
+    });');?>

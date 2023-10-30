@@ -1,0 +1,56 @@
+@import "variables";
+
+.favorite-link {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  text-decoration: none;
+
+  .glyphicon {
+    height: 35px;
+    width: 28px;
+    line-height: 35px;
+    font-size: 26px;
+    overflow: hidden;
+
+    &.glyphicon-star {
+      color: $second-color;
+    }
+
+    &.glyphicon-star-empty {
+      color: $border-color;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .glyphicon {
+      &.glyphicon-star {
+        color: #1C7717;
+      }
+
+      &.glyphicon-star-empty {
+        color: $second-color;
+      }
+    }
+  }
+}
+
+.caption-buttons {
+  .favorite-link {
+    float: right;
+  }
+}
+
+.content-buttons {
+  .favorite-link {
+    float: right;
+  }
+}
+
+.favorite-link-icon {
+  .tooltip {
+    margin-left: -2px;
+  }
+}

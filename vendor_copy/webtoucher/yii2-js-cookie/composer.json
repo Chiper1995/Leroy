@@ -1,0 +1,24 @@
+{
+    "name": "webtoucher/yii2-js-cookie",
+    "description": "Asset Bundle for Yii2 with JavaScript Cookie.",
+    "keywords": ["yii", "extension"],
+    "homepage": "https://github.com/webtoucher/yii2-js-cookie",
+    "type": "yii-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Alexey Kuznetsov",
+            "email": "mirakuru@webtoucher.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "yiisoft/yii2": "*",
+        "bower-asset/js-cookie": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "webtoucher\\cookie\\": "src"
+        }
+    }
+}

@@ -1,0 +1,130 @@
+.visit-thumbnails {
+  $img-radius: 120px;
+  $img-margin: 20px;
+
+  border-top: $main-border;
+
+  .thumbnail {
+    position: relative;
+    padding: 0;
+    margin-bottom: 0;
+    border: $main-border;
+    border-top: none;
+    @include border-radius(0);
+    display: table;
+    width: 100%;
+    height: $img-radius + $img-margin*2;
+
+    @media(max-width:767px) {
+      display: block;
+      height: auto;
+    }
+
+    // Наименование
+    div.caption {
+      padding-left: $img-radius + $img-margin*2;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      @include css3-prefix(box-sizing, border-box);
+
+      @media(max-width:767px) {
+        display: block;
+        padding-left: 9px;
+      }
+    }
+
+    // Фото
+    .im {
+      position: absolute;
+      left: $img-margin;
+      top: $img-margin;
+
+      @media(max-width:767px) {
+        position: static;
+        text-align: center;
+        padding-top: 9px;
+      }
+
+      img {
+        width: $img-radius;
+        height: $img-radius;
+      }
+
+      div.img-circle {
+        @extend img;
+        background: $border-color;
+        text-align: center;
+
+        @media(max-width:767px) {
+          display: inline-block;
+        }
+
+        .glyphicon {
+          color: #ffffff;
+          font-size: $img-radius*2/3;
+          margin-top: ($img-radius - $img-radius*2/3)/2;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  a {
+    color: $text-color;
+  }
+
+  .caption-buttons {
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    height: 35px;
+  }
+
+  $thumbnail-link-radius: 35px;
+
+  .thumbnail-link {
+    @include border-radius(35px);
+    max-width: $thumbnail-link-radius;
+    height: $thumbnail-link-radius;
+    line-height: $thumbnail-link-radius+2px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    margin-right: 3px;
+    background: $border-color;
+    color: $text-color;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-decoration: none;
+
+    @include transition(all 0.2s linear);
+
+    &:hover {
+      max-width: 170px;
+    }
+
+    .glyphicon {
+      width: 35px;
+    }
+
+    span.title {
+      padding-right: 10px;
+    }
+  }
+
+  .no-visits {
+    overflow: hidden;
+    border: $main-border;
+    border-top: none;
+    background: #ffffff;
+    text-align: center;
+  }
+}

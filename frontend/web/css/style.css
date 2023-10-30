@@ -1,0 +1,1858 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,cyrillic");
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 15px;
+  background: url("img/main-bg.jpg") repeat 10px 20px #FFF; }
+
+a, .treeview .selectable-item {
+  color: #4DB748;
+  text-decoration: none; }
+  a:hover, .treeview .selectable-item:hover, a:focus, .treeview .selectable-item:focus {
+    color: #1C7717;
+    text-decoration: underline; }
+
+a.dark, .treeview .dark.selectable-item {
+  color: #353535;
+  padding: 4px 6px;
+  margin-left: -4px;
+  -webkit-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px; }
+  a.dark .glyphicon, .treeview .dark.selectable-item .glyphicon {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+    color: #d2e1ec; }
+  a.dark:hover, .treeview .dark.selectable-item:hover, a.dark:focus, .treeview .dark.selectable-item:focus {
+    background-color: #d2e1ec;
+    text-decoration: none; }
+    a.dark:hover .glyphicon, .treeview .dark.selectable-item:hover .glyphicon, a.dark:focus .glyphicon, .treeview .dark.selectable-item:focus .glyphicon {
+      color: #afb9c2; }
+
+h1, h2, h3, h4 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+  color: #353535; }
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 36px; }
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 24px; }
+
+table.table-no-bordered > thead > tr > th,
+table.table-no-bordered > thead > tr > td,
+table.table-no-bordered > tbody > tr > th,
+table.table-no-bordered > tbody > tr > td,
+table.table-no-bordered > tfoot > tr > th,
+table.table-no-bordered > tfoot > tr > td {
+  border: none; }
+
+.glyphicon {
+  font-size: 15px; }
+  .table .glyphicon {
+    font-size: 12px;
+    color: #353535; }
+
+.btn, .photo-uploader .qq-upload-button {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 10px 33px 10px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 350px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "Open Sans Condensed", sans-serif;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: all .3s ease;
+  -khtml-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease; }
+  .btn:focus, .photo-uploader .qq-upload-button:focus, .btn:active:focus, .photo-uploader .qq-upload-button:active:focus, .btn.active:focus, .photo-uploader .active.qq-upload-button:focus, .btn.focus, .photo-uploader .focus.qq-upload-button, .btn:active.focus, .photo-uploader .qq-upload-button:active.focus, .btn.active.focus, .photo-uploader .active.focus.qq-upload-button {
+    outline: 0; }
+  .btn.btn-xs, .photo-uploader .btn-xs.qq-upload-button {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px; }
+    .btn.btn-xs .glyphicon, .photo-uploader .btn-xs.qq-upload-button .glyphicon {
+      font-size: 13px;
+      top: 3px; }
+
+.btn-primary, .photo-uploader .qq-upload-button {
+  color: #000;
+  background: #ffdd2e;
+  -webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21;
+  -khtml-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21;
+  -moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21;
+  -ms-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21;
+  -o-box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.25),0 1px 0 0 #b59d21; }
+  .btn-primary:active:hover, .photo-uploader .qq-upload-button:active:hover, .btn-primary.active:hover, .photo-uploader .active.qq-upload-button:hover, .btn-primary:active:focus, .photo-uploader .qq-upload-button:active:focus, .btn-primary.active:focus, .photo-uploader .active.qq-upload-button:focus, .btn-primary:active.focus, .photo-uploader .qq-upload-button:active.focus, .btn-primary.active.focus, .photo-uploader .active.focus.qq-upload-button, .btn-primary:hover, .photo-uploader .qq-upload-button:hover, .btn-primary:active, .photo-uploader .qq-upload-button:active, .btn-primary.active, .photo-uploader .active.qq-upload-button, .btn-primary:focus, .photo-uploader .qq-upload-button:focus, .btn-primary.focus, .photo-uploader .focus.qq-upload-button {
+    color: #000;
+    background-color: #ffcd33; }
+
+.caption-with-icon .glyphicon {
+  color: #d2e1ec;
+  margin-right: 4px; }
+
+.journal-thumbnails {
+  /* ╨Ф╨░╤В╨░ */ }
+  .journal-thumbnails .thumbnail {
+    position: relative;
+    padding: 0;
+    border: solid 3px #d2e1ec;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+  .journal-thumbnails h2 {
+    height: 44px;
+    font-size: 20px;
+    overflow: hidden; }
+    @media (max-width: 767px) {
+      .journal-thumbnails h2 {
+        height: auto;
+        font-size: 20px; } }
+    @media (min-width: 768px) {
+      .journal-thumbnails h2 {
+        height: 54px;
+        font-size: 24px; } }
+    @media (min-width: 992px) {
+      .journal-thumbnails h2 {
+        height: 44px;
+        font-size: 20px; } }
+    @media (min-width: 1200px) {
+      .journal-thumbnails h2 {
+        height: 54px;
+        font-size: 24px; } }
+  .journal-thumbnails a, .journal-thumbnails .treeview .selectable-item, .treeview .journal-thumbnails .selectable-item {
+    color: #353535; }
+  .journal-thumbnails .caption-buttons {
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap; }
+  .journal-thumbnails .thumbnail-link {
+    -webkit-border-radius: 35px;
+    -khtml-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+    border-radius: 35px;
+    max-width: 35px;
+    height: 35px;
+    line-height: 37px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    margin-right: 3px;
+    background: #d2e1ec;
+    color: #353535;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+    -khtml-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    .journal-thumbnails .thumbnail-link:hover {
+      max-width: 160px; }
+    .journal-thumbnails .thumbnail-link .glyphicon {
+      width: 35px; }
+    .journal-thumbnails .thumbnail-link span.title {
+      padding-right: 10px; }
+  .journal-thumbnails .date-badge {
+    position: absolute;
+    left: -4px;
+    top: 10px;
+    padding: 5px 10px 1px 10px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -khtml-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    background: #4DB748;
+    color: #e7f1fa;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 14px;
+    text-align: center; }
+    .journal-thumbnails .date-badge span {
+      display: block; }
+    .journal-thumbnails .date-badge span.day {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 19px; }
+    .journal-thumbnails .date-badge span.year {
+      font-size: 11px; }
+
+.content-container-caption h2 {
+  margin-bottom: 15px; }
+
+/** ImageUpload ******************************************************************************************************/
+.photo-uploader .drop-zone-container {
+  position: relative;
+  margin-bottom: 15px; }
+.photo-uploader .drop-zone {
+  border: dashed 2px #d2e1ec;
+  position: relative;
+  padding-bottom: 85px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px; }
+.photo-uploader .drop-zone-text {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  margin-top: -100px;
+  padding: 25px 0;
+  text-align: center;
+  font-size: 35px;
+  color: #d2e1ec; }
+  @media (max-width: 767px) {
+    .photo-uploader .drop-zone-text {
+      font-size: 25px; } }
+.photo-uploader .qq-upload-list {
+  margin-left: 15px; }
+.photo-uploader .qq-upload-list li.qq-upload-success {
+  display: none; }
+.photo-uploader .qq-upload-drop-area-active {
+  background: rgba(255, 240, 189, 0.5);
+  opacity: 50; }
+.photo-uploader .photos {
+  padding-top: 15px; }
+.photo-uploader .photo {
+  background: #fff; }
+  .photo-uploader .photo .thumbnail {
+    margin-bottom: 15px; }
+  .photo-uploader .photo a, .photo-uploader .photo .treeview .selectable-item, .treeview .photo-uploader .photo .selectable-item {
+    text-decoration: none; }
+  .photo-uploader .photo .btn, .photo-uploader .photo .qq-upload-button {
+    width: 100%;
+    max-width: 100%;
+    padding: 6px 12px; }
+.photo-uploader .qq-upload-button {
+  width: 230px;
+  position: relative;
+  margin-left: 50%;
+  left: -115px;
+  text-shadow: none; }
+.photo-uploader .qq-upload-button-hover, .photo-uploader .qq-upload-button-focus {
+  color: #000;
+  background-color: #ffcd33; }
+.photo-uploader .qq-upload-button-focus {
+  outline: 0; }
+.photo-uploader .qq-upload-button-hover.qq-upload-button-focus {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset 2px 5px rgba(0, 0, 0, 0.4); }
+.photo-uploader .photo-uploader-control {
+  overflow: hidden;
+  min-height: 48px; }
+@media (max-width: 767px) {
+  .photo-uploader.family-photo-uploader {
+    width: 220px;
+    margin: 0 auto; } }
+.photo-uploader.family-photo-uploader .photo-container {
+  padding: 6px; }
+.photo-uploader.family-photo-uploader img, .photo-uploader.family-photo-uploader .family-journal-header .im div.img-circle, .family-journal-header .im .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .comment-list .media-left span div.img-circle, .comment-list .media-left span .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .family-view-photo div.img-circle, .family-view-photo .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .dialog-users-select div.img-circle, .dialog-users-select .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .message-item > .media-left div.img-circle, .message-item > .media-left .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .dialog-users-list div.img-circle, .dialog-users-list .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .photo-uploader.family-photo-uploader div.img-circle, .photo-uploader.family-photo-uploader .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .photo-uploader.family-photo-uploader div.img-circle {
+  width: 100%;
+  border: solid 1px transparent;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px; }
+.photo-uploader.family-photo-uploader .drop-zone-text {
+  font-size: 22px; }
+.photo-uploader.family-photo-uploader .qq-upload-button {
+  width: 200px;
+  left: -100px;
+  padding: 10px; }
+
+/** Modal */
+.modal-header {
+  background: #4DB748;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 0; }
+  .modal-header .close {
+    color: #e7f1fa;
+    opacity: 1;
+    text-shadow: none;
+    line-height: inherit; }
+
+.modal-title {
+  color: #e7f1fa; }
+
+/***/
+.treeview span.icon {
+  margin-right: 3px; }
+.treeview .expand-icon {
+  font-size: 12px; }
+.treeview .node-selected {
+  font-weight: bold; }
+  .treeview .node-selected .node-icon {
+    color: #4DB748;
+    margin-right: 6px; }
+
+.goods {
+  border-bottom: dotted 1px #d2e1ec;
+  padding: 4px 0;
+  line-height: 18px;
+  display: table;
+  table-layout: fixed; }
+  .goods .goods-header {
+    font-weight: bold; }
+  .goods .data-column {
+    display: table-cell;
+    width: 100%; }
+  .goods .buttons-column {
+    display: table-cell;
+    width: 30px; }
+  .goods .glyphicon {
+    top: 4px; }
+  .goods a.goods-delete, .goods .treeview .goods-delete.selectable-item, .treeview .goods .goods-delete.selectable-item {
+    text-decoration: none; }
+    .goods a.goods-delete:hover, .goods .treeview .goods-delete.selectable-item:hover, .treeview .goods .goods-delete.selectable-item:hover {
+      text-decoration: none; }
+  .goods .goods-name, .goods .goods-sum {
+    display: table;
+    min-height: 32px; }
+    .goods .goods-name span, .goods .goods-sum span {
+      display: table-cell;
+      vertical-align: middle; }
+  .goods .goods-delete-block {
+    display: table;
+    min-height: 32px; }
+    .goods .goods-delete-block a, .goods .goods-delete-block .treeview .selectable-item, .treeview .goods .goods-delete-block .selectable-item {
+      display: table-cell;
+      vertical-align: middle; }
+  .check-container-block-view .goods {
+    line-height: 22px; }
+
+.goods-view {
+  border-bottom: dotted 1px #d2e1ec;
+  padding: 10px 0;
+  line-height: 18px; }
+  .goods-view .goods-header {
+    font-weight: bold; }
+  .goods-view.goods-total {
+    border-bottom: none;
+    font-weight: bold; }
+
+.goods-template {
+  display: none; }
+
+#journal-goods {
+  padding: 0 15px;
+  margin-bottom: 15px; }
+
+.btn-with-margin-right {
+  margin-right: 10px !important; }
+
+.bootbox-body {
+  font-size: 17px; }
+
+/** Check *******************************************************************************************************/
+.check-container-block {
+  padding: 0 0 0 0;
+  margin-bottom: 15px; }
+
+.check-container-block-view {
+  padding: 0 0 0 0;
+  margin-bottom: 15px; }
+  @media (min-width: 1200px) {
+    .check-container-block-view {
+      padding: 0 0 0 15px; } }
+  .check-container-block-view .thumbnail {
+    margin-bottom: 0;
+    margin-top: 20px; }
+
+.check-container {
+  background: transparent url("img/check.png") repeat-x 0 0;
+  padding: 12px 0 0 0;
+  position: relative; }
+  .check-container:before {
+    background: transparent url("img/check-2.png") repeat-x -3px 0;
+    display: block;
+    position: relative;
+    top: -8px;
+    content: " ";
+    height: 12px;
+    margin: 0 3px 0 3px; }
+
+.check-container-inner {
+  margin-top: -13px;
+  padding: 0 0 12px 0;
+  background: transparent url("img/check-b.png") repeat-x 10px 100%; }
+  .check-container-inner:after {
+    background: transparent url("img/check-b-2.png") repeat-x -21px 0;
+    display: block;
+    position: relative;
+    content: " ";
+    height: 12px;
+    margin: 0 3px 0 3px;
+    top: 8px; }
+
+.check-container-inner-content {
+  background: #fff;
+  border: solid 3px #d2e1ec;
+  border-top: none;
+  border-bottom: none;
+  margin-bottom: -12px;
+  padding: 12px; }
+  .check-container-inner-content h2 {
+    margin-top: 4px;
+    padding-top: 8px;
+    text-align: center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQIW2O8ev/FfwYGBgZtRQlGEM2IIQASBQGYBFgZsgAALl8PO/GqodwAAAAASUVORK5CYII=) 0 0 repeat-x;
+    font-size: 24px; }
+    .check-container-inner-content h2:after {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQIW2O8ev/FfwYGBgZtRQlGEM2IIQASBQGYBFgZsgAALl8PO/GqodwAAAAASUVORK5CYII=) 0 0 repeat-x;
+      content: " ";
+      height: 4px;
+      display: block;
+      margin-top: 4px; }
+
+.kv-hide-search .select2-search {
+  display: none; }
+
+.glyphicon.glyphicon-rub {
+  font-size: 12px; }
+
+.fa.fa-rub {
+  font-size: 14px; }
+
+@media (max-width: 767px) {
+  .list-view {
+    overflow: hidden; } }
+
+.help-block {
+  margin-top: 0;
+  font-size: 12px; }
+
+.tab-pane {
+  padding: 10px; }
+
+.nav-tabs {
+  border-bottom: 2px solid #d2e1ec; }
+  .nav-tabs > li {
+    margin-bottom: -2px; }
+    .nav-tabs > li.active > a, .treeview .nav-tabs > li.active > .selectable-item, .nav-tabs > li.active > a:hover, .treeview .nav-tabs > li.active > .selectable-item:hover, .nav-tabs > li.active > a:focus, .treeview .nav-tabs > li.active > .selectable-item:focus {
+      border: 2px solid #d2e1ec;
+      border-bottom-color: transparent; }
+    .nav-tabs > li a, .nav-tabs > li .treeview .selectable-item, .treeview .nav-tabs > li .selectable-item {
+      outline: none; }
+
+/* ╨и╨░╨┐╨║╨░ ╨▓ ╨┤╨╜╨╡╨▓╨╜╨╕╨║╨╡ ╤Б╨╡╨╝╤М╨╕ */
+.family-journal-header {
+  position: relative;
+  margin-bottom: 15px;
+  min-height: 166px; }
+  .family-journal-header .im {
+    position: absolute;
+    left: 30px;
+    top: 0; }
+    @media (max-width: 767px) {
+      .family-journal-header .im {
+        position: static;
+        text-align: center;
+        padding: 12px; } }
+    .family-journal-header .im img, .family-journal-header .im div.img-circle, .family-journal-header .im .comment-list .media-left span div.img-circle, .comment-list .media-left span .family-journal-header .im div.img-circle, .family-journal-header .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .family-journal-header .im div.img-circle, .family-journal-header .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .family-journal-header .im div.img-circle, .family-journal-header .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .family-journal-header .im div.img-circle, .family-journal-header .im .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .family-journal-header .im div.img-circle, .family-journal-header .im .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .family-journal-header .im div.img-circle, .family-journal-header .im .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .family-journal-header .im div.img-circle, .family-journal-header .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .family-journal-header .im div.img-circle, .family-journal-header .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .family-journal-header .im div.img-circle {
+      width: 166px;
+      height: 166px; }
+    .family-journal-header .im div.img-circle {
+      background: #d2e1ec;
+      text-align: center; }
+      @media (max-width: 767px) {
+        .family-journal-header .im div.img-circle {
+          display: inline-block; } }
+      .family-journal-header .im div.img-circle .glyphicon {
+        color: #ffffff;
+        font-size: 107.09677px;
+        margin-top: 24.66667px; }
+  .family-journal-header div.memo {
+    padding-left: 226px; }
+    @media (max-width: 767px) {
+      .family-journal-header div.memo {
+        display: block;
+        padding-left: 9px; } }
+  .family-journal-header p {
+    font-size: 19px;
+    margin: 0; }
+    @media (max-width: 767px) {
+      .family-journal-header p {
+        font-size: 15px;
+        text-align: center; } }
+    .family-journal-header p a.btn, .family-journal-header p .photo-uploader a.qq-upload-button, .photo-uploader .family-journal-header p a.qq-upload-button, .family-journal-header p .photo-uploader .treeview .qq-upload-button.selectable-item, .photo-uploader .treeview .family-journal-header p .qq-upload-button.selectable-item, .family-journal-header p .treeview .photo-uploader .qq-upload-button.selectable-item, .treeview .photo-uploader .family-journal-header p .qq-upload-button.selectable-item, .family-journal-header p .treeview .btn.selectable-item, .treeview .family-journal-header p .btn.selectable-item {
+      margin-top: 10px; }
+  @media (max-width: 767px) {
+    .family-journal-header h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 5px;
+      margin-top: 5px; } }
+  .family-journal-header h1 a, .family-journal-header h1 .treeview .selectable-item, .treeview .family-journal-header h1 .selectable-item {
+    color: #353535;
+    text-decoration: underline; }
+    .family-journal-header h1 a:hover, .family-journal-header h1 .treeview .selectable-item:hover, .treeview .family-journal-header h1 .selectable-item:hover {
+      color: #1C7717; }
+
+.family-view-detail .table > tbody > tr > th {
+  width: 160px;
+  border: none; }
+.family-view-detail .table > tbody > tr > td {
+  border: none; }
+
+.view-journal-header {
+  position: relative; }
+  .view-journal-header .points {
+    position: absolute;
+    top: -40px;
+    right: 30px; }
+    .view-journal-header .points p {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      color: #877203;
+      text-shadow: 1px 1px 1px #FFEFA1; }
+      .view-journal-header .points p.value {
+        top: 13px;
+        font-weight: bold;
+        font-size: 28px; }
+      .view-journal-header .points p.caption {
+        top: 43px;
+        font-size: 12px; }
+    .view-journal-header .points .glyphicon {
+      color: #FFDD2E;
+      font-size: 76px;
+      text-shadow: 0px 0px 3px #877203; }
+
+.view-task-families a.draft, .view-task-families .treeview .draft.selectable-item, .treeview .view-task-families .draft.selectable-item {
+  border-bottom: solid 3px #d2e1ec; }
+.view-task-families a.on-check, .view-task-families .treeview .on-check.selectable-item, .treeview .view-task-families .on-check.selectable-item {
+  border-bottom: solid 3px #FFDD2E; }
+.view-task-families a.published, .view-task-families .treeview .published.selectable-item, .treeview .view-task-families .published.selectable-item {
+  border-bottom: solid 3px #4DB748; }
+.view-task-families a:hover, .view-task-families .treeview .selectable-item:hover, .treeview .view-task-families .selectable-item:hover {
+  text-decoration: none; }
+
+.grid-button-cell {
+  width: 10px;
+  word-break: keep-all;
+  white-space: nowrap; }
+
+.grid-button {
+  margin: 0 10px; }
+
+.grid-items-container {
+  overflow-x: auto;
+  margin-bottom: 20px; }
+  .grid-items-container table {
+    margin-bottom: 0; }
+
+.family-profile-sum {
+  margin-top: 50px;
+  text-align: center; }
+  .family-profile-sum p.points {
+    position: relative;
+    padding-left: 5px; }
+    @media (max-width: 767px) {
+      .family-profile-sum p.points {
+        padding-bottom: 4px; } }
+    .family-profile-sum p.points .glyphicon {
+      position: relative;
+      top: 4px;
+      left: 4px;
+      font-size: 21px;
+      color: #FFDD2E;
+      text-shadow: -1px 0px 0px #877203; }
+
+.form-buttons {
+  margin-top: -15px; }
+  .form-buttons .btn, .form-buttons .photo-uploader .qq-upload-button, .photo-uploader .form-buttons .qq-upload-button {
+    margin-top: 15px; }
+
+.comment-list {
+  margin-bottom: 15px; }
+  .comment-list h2 {
+    margin-bottom: 15px; }
+  .comment-list h4 a, .comment-list h4 .treeview .selectable-item, .treeview .comment-list h4 .selectable-item {
+    font-size: 14px;
+    margin-left: 10px; }
+    .comment-list h4 a.reply, .comment-list h4 .treeview .reply.selectable-item, .treeview .comment-list h4 .reply.selectable-item {
+      color: #4DB748; }
+    .comment-list h4 a.delete, .comment-list h4 .treeview .delete.selectable-item, .treeview .comment-list h4 .delete.selectable-item {
+      color: #fac8cb;
+      -webkit-transition: all 0.3s ease;
+      -khtml-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      .comment-list h4 a.delete:hover, .comment-list h4 .treeview .delete.selectable-item:hover, .treeview .comment-list h4 .delete.selectable-item:hover {
+        color: #ef3a47; }
+  .comment-list .media {
+    margin-top: 0;
+    padding: 6px 0;
+    opacity: 1;
+    -webkit-transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+    -khtml-transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+    -moz-transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+    -ms-transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+    -o-transition: background-color 0.5s ease, opacity 0.5s ease 0.5s;
+    transition: background-color 0.5s ease, opacity 0.5s ease 0.5s; }
+    .comment-list .media.deleting {
+      background-color: #fef7f7;
+      opacity: 0; }
+    .comment-list .media.new, .comment-list .media.showed {
+      -webkit-transition: background-color 1.5s ease;
+      -khtml-transition: background-color 1.5s ease;
+      -moz-transition: background-color 1.5s ease;
+      -ms-transition: background-color 1.5s ease;
+      -o-transition: background-color 1.5s ease;
+      transition: background-color 1.5s ease;
+      background-color: #dbf1da; }
+  .comment-list .media-left span img, .comment-list .media-left span div.img-circle, .comment-list .media-left span .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .comment-list .media-left span div.img-circle, .comment-list .media-left span .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .comment-list .media-left span div.img-circle, .comment-list .media-left span .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .comment-list .media-left span div.img-circle, .comment-list .dialog-item .dialog-last-message > .media > .media-left span div.img-circle, .dialog-item .comment-list .dialog-last-message > .media > .media-left span div.img-circle, .comment-list .media-left span .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .comment-list .media-left span div.img-circle, .comment-list .media-left span .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .comment-list .media-left span div.img-circle {
+    width: 70px;
+    height: 70px; }
+  .comment-list .media-left span div.img-circle {
+    background: #d2e1ec;
+    text-align: center; }
+    @media (max-width: 767px) {
+      .comment-list .media-left span div.img-circle {
+        display: inline-block; } }
+    .comment-list .media-left span div.img-circle .glyphicon {
+      color: #ffffff;
+      font-size: 45.16129px;
+      margin-top: 8.66667px; }
+  .comment-list .media-body p {
+    min-height: 34px;
+    margin: 0; }
+  .comment-list .datetime {
+    font-size: 12px; }
+
+.comment-form {
+  border-top: dashed 3px #d2e1ec;
+  padding-top: 15px; }
+  .comment-form .parent-comment {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 6px;
+    border-left: solid 3px #d2e1ec;
+    display: none; }
+
+.family-view-photo {
+  min-height: 166px;
+  text-align: center; }
+  @media (max-width: 767px) {
+    .family-view-photo {
+      position: static;
+      text-align: center;
+      padding: 12px; } }
+  .family-view-photo img, .family-view-photo .family-journal-header .im div.img-circle, .family-journal-header .im .family-view-photo div.img-circle, .family-view-photo .comment-list .media-left span div.img-circle, .comment-list .media-left span .family-view-photo div.img-circle, .family-view-photo div.img-circle, .family-view-photo .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .family-view-photo div.img-circle, .family-view-photo .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .family-view-photo div.img-circle, .family-view-photo .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .family-view-photo div.img-circle, .family-view-photo .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .family-view-photo div.img-circle, .family-view-photo .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .family-view-photo div.img-circle, .family-view-photo .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .family-view-photo div.img-circle, .family-view-photo .message-item > .media-left div.img-circle, .message-item > .media-left .family-view-photo div.img-circle, .family-view-photo .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .family-view-photo div.img-circle, .family-view-photo .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .family-view-photo div.img-circle {
+    width: 166px;
+    height: 166px; }
+  .family-view-photo div.img-circle {
+    margin: 0 auto;
+    background: #d2e1ec;
+    text-align: center; }
+    @media (max-width: 767px) {
+      .family-view-photo div.img-circle {
+        display: inline-block; } }
+    .family-view-photo div.img-circle .glyphicon {
+      color: #ffffff;
+      font-size: 107.09677px;
+      margin-top: 24.66667px; }
+
+.nav-pills > li.active > a, .treeview .nav-pills > li.active > .selectable-item, .nav-pills > li.active > a:hover, .treeview .nav-pills > li.active > .selectable-item:hover, .nav-pills > li.active > a:focus, .treeview .nav-pills > li.active > .selectable-item:focus {
+  background: #4DB748; }
+
+.form-control:focus {
+  border-color: #4DB748;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -khtml-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6); }
+
+.ias-trigger {
+  margin-bottom: 15px; }
+
+.ias-spinner {
+  margin-bottom: 15px;
+  min-height: 45px; }
+
+.points-content {
+  position: relative;
+  padding-right: 30px; }
+  .points-content .reduce-btn {
+    position: absolute;
+    right: 0; }
+
+.no-wrap {
+  white-space: nowrap; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.navbar {
+  background-color: #fff;
+  border-color: #fff;
+  border-width: 0; }
+
+.first-navbar {
+  margin-bottom: 0; }
+  .first-navbar .glyphicon {
+    font-size: 26px;
+    position: relative;
+    top: 4px; }
+    .first-navbar .help-link .glyphicon {
+      font-size: 30px; }
+  .first-navbar .navbar-nav {
+    margin: 0 !important; }
+    .first-navbar .navbar-nav > li > a, .first-navbar .treeview .navbar-nav > li > .selectable-item, .treeview .first-navbar .navbar-nav > li > .selectable-item {
+      line-height: 49px;
+      font-size: 28px; }
+    @media (max-width: 767px) {
+      .first-navbar .navbar-nav .open .dropdown-menu {
+        position: absolute;
+        left: 0;
+        background-color: #f2f3f4;
+        width: 100%;
+        -webkit-box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175);
+        -khtml-box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175);
+        -moz-box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175);
+        -ms-box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175);
+        -o-box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: -12px 6px 12px rgba(0, 0, 0, 0.175); } }
+
+.first-navbar .navbar-nav > .active > a, .first-navbar .treeview .navbar-nav > .active > .selectable-item, .treeview .first-navbar .navbar-nav > .active > .selectable-item, .first-navbar .navbar-nav > .active > a:hover, .first-navbar .treeview .navbar-nav > .active > .selectable-item:hover, .treeview .first-navbar .navbar-nav > .active > .selectable-item:hover, .first-navbar .navbar-nav > .active > a:focus, .first-navbar .treeview .navbar-nav > .active > .selectable-item:focus, .treeview .first-navbar .navbar-nav > .active > .selectable-item:focus {
+  background: #ffdd2e;
+  color: #745209; }
+
+.first-navbar .navbar-nav > .open > a, .first-navbar .treeview .navbar-nav > .open > .selectable-item, .treeview .first-navbar .navbar-nav > .open > .selectable-item, .first-navbar .navbar-nav > .open > a:hover, .first-navbar .treeview .navbar-nav > .open > .selectable-item:hover, .treeview .first-navbar .navbar-nav > .open > .selectable-item:hover, .first-navbar .navbar-nav > .open > a:focus, .first-navbar .treeview .navbar-nav > .open > .selectable-item:focus, .treeview .first-navbar .navbar-nav > .open > .selectable-item:focus {
+  background: #ffdd2e;
+  color: #745209; }
+
+.first-navbar .navbar-nav > li > a:hover, .first-navbar .treeview .navbar-nav > li > .selectable-item:hover, .treeview .first-navbar .navbar-nav > li > .selectable-item:hover, .first-navbar .navbar-nav > li > a:focus, .first-navbar .treeview .navbar-nav > li > .selectable-item:focus, .treeview .first-navbar .navbar-nav > li > .selectable-item:focus {
+  background: #ffdd2e;
+  color: #745209; }
+
+/** disable collapsing **/
+.first-navbar .navbar-collapse.collapse {
+  display: block !important; }
+
+.first-navbar .navbar-nav > li, .first-navbar .navbar-nav {
+  float: left !important; }
+  @media (max-width: 767px) {
+    .first-navbar .navbar-nav > li, .first-navbar .navbar-nav {
+      position: static; } }
+
+.first-navbar .navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important; }
+
+.first-navbar .navbar-right {
+  float: right !important; }
+
+.first-navbar .navbar-header {
+  float: left !important; }
+
+.first-navbar .nav > li > a, .first-navbar .treeview .nav > li > .selectable-item, .treeview .first-navbar .nav > li > .selectable-item {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important; }
+
+/** END disable collapsing **/
+.navbar-inverse {
+  background-color: #4DB748;
+  border-color: #4DB748;
+  margin-bottom: 60px; }
+  .navbar-inverse .navbar-nav > li > a, .navbar-inverse .treeview .navbar-nav > li > .selectable-item, .treeview .navbar-inverse .navbar-nav > li > .selectable-item {
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #fff;
+    -webkit-transition: background 0.3s linear, color 0.3s linear;
+    -khtml-transition: background 0.3s linear, color 0.3s linear;
+    -moz-transition: background 0.3s linear, color 0.3s linear;
+    -ms-transition: background 0.3s linear, color 0.3s linear;
+    -o-transition: background 0.3s linear, color 0.3s linear;
+    transition: background 0.3s linear, color 0.3s linear; }
+    .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .treeview .navbar-nav > li > .selectable-item:hover, .treeview .navbar-inverse .navbar-nav > li > .selectable-item:hover {
+      background-color: #1C7717; }
+  .navbar-inverse .navbar-nav > li.active > a, .navbar-inverse .treeview .navbar-nav > li.active > .selectable-item, .treeview .navbar-inverse .navbar-nav > li.active > .selectable-item, .navbar-inverse .navbar-nav > li.active > a:hover, .navbar-inverse .treeview .navbar-nav > li.active > .selectable-item:hover, .treeview .navbar-inverse .navbar-nav > li.active > .selectable-item:hover, .navbar-inverse .navbar-nav > li.active > a:focus, .navbar-inverse .treeview .navbar-nav > li.active > .selectable-item:focus, .treeview .navbar-inverse .navbar-nav > li.active > .selectable-item:focus, .navbar-inverse .navbar-nav > li.open > a, .navbar-inverse .treeview .navbar-nav > li.open > .selectable-item, .treeview .navbar-inverse .navbar-nav > li.open > .selectable-item, .navbar-inverse .navbar-nav > li.open > a:hover, .navbar-inverse .treeview .navbar-nav > li.open > .selectable-item:hover, .treeview .navbar-inverse .navbar-nav > li.open > .selectable-item:hover, .navbar-inverse .navbar-nav > li.open > a:focus, .navbar-inverse .treeview .navbar-nav > li.open > .selectable-item:focus, .treeview .navbar-inverse .navbar-nav > li.open > .selectable-item:focus {
+    background-color: #1C7717; }
+  @media (max-width: 767px) {
+    .navbar-inverse .navbar-nav > li.open .dropdown-menu > li > a, .navbar-inverse .navbar-nav > li.open .treeview .dropdown-menu > li > .selectable-item, .treeview .navbar-inverse .navbar-nav > li.open .dropdown-menu > li > .selectable-item {
+      color: #fff; }
+      .navbar-inverse .navbar-nav > li.open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav > li.open .treeview .dropdown-menu > li > .selectable-item:hover, .treeview .navbar-inverse .navbar-nav > li.open .dropdown-menu > li > .selectable-item:hover {
+        background-color: #1C7717; } }
+  .navbar-inverse .navbar-toggle {
+    border-color: #1C7717; }
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+      background-color: #1C7717; }
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: transparent; }
+  .navbar-inverse .fa {
+    font-size: 17px; }
+  .navbar-inverse .tooltip {
+    word-break: keep-all;
+    white-space: nowrap;
+    visibility: hidden; }
+    @media (min-width: 768px) {
+      .navbar-inverse .tooltip {
+        visibility: visible; } }
+    @media (min-width: 992px) {
+      .navbar-inverse .tooltip {
+        visibility: hidden; } }
+    @media (min-width: 1200px) {
+      .navbar-inverse .tooltip {
+        visibility: hidden; } }
+
+.dropdown-menu > .active > a, .treeview .dropdown-menu > .active > .selectable-item, .dropdown-menu > .active > a:hover, .treeview .dropdown-menu > .active > .selectable-item:hover, .dropdown-menu > .active > a:focus, .treeview .dropdown-menu > .active > .selectable-item:focus {
+  background-color: #4db748; }
+
+.breadcrumbs-bar {
+  background-color: #f2f3f4; }
+  .breadcrumbs-bar .breadcrumbs-bar-inner {
+    padding-left: 220px;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px; }
+    @media (max-width: 767px) {
+      .breadcrumbs-bar .breadcrumbs-bar-inner {
+        padding-left: 130px; } }
+    .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb {
+      padding: 0;
+      background-color: transparent; }
+      .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb a, .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb .treeview .selectable-item, .treeview .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb .selectable-item {
+        color: #1C7717; }
+      .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb > .active {
+        color: #1C7717; }
+      .breadcrumbs-bar .breadcrumbs-bar-inner .breadcrumb > li + li:before {
+        color: #1C7717;
+        content: "\2192\00a0"; }
+
+.navbar-brand {
+  position: relative; }
+  .navbar-brand img, .navbar-brand .family-journal-header .im div.img-circle, .family-journal-header .im .navbar-brand div.img-circle, .navbar-brand .comment-list .media-left span div.img-circle, .comment-list .media-left span .navbar-brand div.img-circle, .navbar-brand .family-view-photo div.img-circle, .family-view-photo .navbar-brand div.img-circle, .navbar-brand .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .navbar-brand div.img-circle, .navbar-brand .dialog-users-select div.img-circle, .dialog-users-select .navbar-brand div.img-circle, .navbar-brand .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .navbar-brand div.img-circle, .navbar-brand .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .navbar-brand div.img-circle, .navbar-brand .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .navbar-brand div.img-circle, .navbar-brand .message-item > .media-left div.img-circle, .message-item > .media-left .navbar-brand div.img-circle, .navbar-brand .dialog-users-list div.img-circle, .dialog-users-list .navbar-brand div.img-circle, .navbar-brand .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .navbar-brand div.img-circle {
+    position: absolute;
+    top: -26px; }
+    @media (max-width: 767px) {
+      .navbar-brand img, .navbar-brand .family-journal-header .im div.img-circle, .family-journal-header .im .navbar-brand div.img-circle, .navbar-brand .comment-list .media-left span div.img-circle, .comment-list .media-left span .navbar-brand div.img-circle, .navbar-brand .family-view-photo div.img-circle, .family-view-photo .navbar-brand div.img-circle, .navbar-brand .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .navbar-brand div.img-circle, .navbar-brand .dialog-users-select div.img-circle, .dialog-users-select .navbar-brand div.img-circle, .navbar-brand .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .navbar-brand div.img-circle, .navbar-brand .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .navbar-brand div.img-circle, .navbar-brand .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .navbar-brand div.img-circle, .navbar-brand .message-item > .media-left div.img-circle, .message-item > .media-left .navbar-brand div.img-circle, .navbar-brand .dialog-users-list div.img-circle, .dialog-users-list .navbar-brand div.img-circle, .navbar-brand .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .navbar-brand div.img-circle, .navbar-brand .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .navbar-brand div.img-circle {
+        top: -20px;
+        width: 120px;
+        z-index: 5000; } }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.notification-bell-link a, .notification-bell-link .treeview .selectable-item, .treeview .notification-bell-link .selectable-item {
+  position: relative; }
+.notification-bell-link .caret {
+  display: none; }
+.notification-bell-link .dropdown-menu {
+  background: #f2f3f4;
+  max-height: 556px;
+  overflow: auto; }
+.notification-bell-link .badge {
+  position: absolute;
+  top: 17px;
+  right: 3px;
+  padding: 3px 6px;
+  font-weight: normal;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+.notification-bell-link .badge-danger {
+  background-color: #d73d32; }
+
+.notification {
+  margin: 8px 12px 8px 12px;
+  background: #d2e1ec;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+  .notification h4 {
+    padding-top: 9px;
+    margin-top: 0;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+  .notification div {
+    background: #fff;
+    margin-left: 125px;
+    height: 126px;
+    width: 340px;
+    padding: 0 10px; }
+    @media (max-width: 767px) {
+      .notification div {
+        width: 100%; } }
+    .notification div p {
+      margin: 0 0 2px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+      .notification div p.buttons {
+        padding-bottom: 4px; }
+      .notification div p .btn-primary, .notification div p .photo-uploader .qq-upload-button, .photo-uploader .notification div p .qq-upload-button {
+        font-size: 16px;
+        padding: 4px 23px 4px;
+        margin-top: 3px; }
+  .notification p.icon {
+    width: 126px;
+    height: 126px;
+    margin: 0;
+    text-align: center;
+    line-height: 106px;
+    left: 0;
+    position: relative;
+    float: left; }
+    .notification p.icon .glyphicon {
+      font-size: 106px;
+      line-height: 119px;
+      color: #fff; }
+
+.pagination {
+  margin: 0 0 10px 0; }
+  .pagination > li > a, .treeview .pagination > li > .selectable-item, .pagination > li > span {
+    color: #1C7717; }
+  .pagination .active > a, .pagination .treeview .active > .selectable-item, .treeview .pagination .active > .selectable-item, .pagination .active > a:hover, .pagination .treeview .active > .selectable-item:hover, .treeview .pagination .active > .selectable-item:hover, .pagination .active > a:focus, .pagination .treeview .active > .selectable-item:focus, .treeview .pagination .active > .selectable-item:focus, .pagination .active > span, .pagination .active > span:hover, .pagination .active > span:focus {
+    background-color: #4DB748;
+    border-color: #4DB748; }
+
+.task-thumbnails {
+  border-top: solid 3px #d2e1ec; }
+  .task-thumbnails .thumbnail {
+    position: relative;
+    padding: 0;
+    margin-bottom: 0;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    display: table;
+    width: 100%;
+    height: 160px; }
+    @media (max-width: 767px) {
+      .task-thumbnails .thumbnail {
+        display: block;
+        height: auto; } }
+    .task-thumbnails .thumbnail div.caption {
+      padding-left: 160px;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      -webkit-box-sizing: border-box;
+      -khtml-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+      @media (max-width: 767px) {
+        .task-thumbnails .thumbnail div.caption {
+          display: block;
+          padding-left: 9px; } }
+    .task-thumbnails .thumbnail .im {
+      position: absolute;
+      left: 20px;
+      top: 20px; }
+      @media (max-width: 767px) {
+        .task-thumbnails .thumbnail .im {
+          position: static;
+          text-align: center;
+          padding-top: 9px; } }
+      .task-thumbnails .thumbnail .im img, .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .task-thumbnails .thumbnail .im div.img-circle {
+        width: 120px;
+        height: 120px; }
+      .task-thumbnails .thumbnail .im div.img-circle {
+        background: #d2e1ec;
+        text-align: center; }
+        @media (max-width: 767px) {
+          .task-thumbnails .thumbnail .im div.img-circle {
+            display: inline-block; } }
+        .task-thumbnails .thumbnail .im div.img-circle .glyphicon {
+          color: #ffffff;
+          font-size: 80px;
+          margin-top: 17px; }
+  .task-thumbnails .pagination {
+    margin-top: 20px; }
+  .task-thumbnails h2 {
+    font-size: 20px; }
+  .task-thumbnails a, .task-thumbnails .treeview .selectable-item, .treeview .task-thumbnails .selectable-item {
+    color: #353535; }
+  .task-thumbnails .caption-buttons {
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    height: 35px; }
+  .task-thumbnails .thumbnail-link {
+    -webkit-border-radius: 35px;
+    -khtml-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+    border-radius: 35px;
+    max-width: 35px;
+    height: 35px;
+    line-height: 37px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    margin-right: 3px;
+    background: #d2e1ec;
+    color: #353535;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+    -khtml-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    .task-thumbnails .thumbnail-link:hover {
+      max-width: 170px; }
+    .task-thumbnails .thumbnail-link .glyphicon {
+      width: 35px; }
+    .task-thumbnails .thumbnail-link span.title {
+      padding-right: 10px; }
+  .task-thumbnails .no-tasks {
+    overflow: hidden;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    background: #ffffff;
+    text-align: center; }
+
+.visit-thumbnails {
+  border-top: solid 3px #d2e1ec; }
+  .visit-thumbnails .thumbnail {
+    position: relative;
+    padding: 0;
+    margin-bottom: 0;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    display: table;
+    width: 100%;
+    height: 160px; }
+    @media (max-width: 767px) {
+      .visit-thumbnails .thumbnail {
+        display: block;
+        height: auto; } }
+    .visit-thumbnails .thumbnail div.caption {
+      padding-left: 160px;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      -webkit-box-sizing: border-box;
+      -khtml-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+      @media (max-width: 767px) {
+        .visit-thumbnails .thumbnail div.caption {
+          display: block;
+          padding-left: 9px; } }
+    .visit-thumbnails .thumbnail .im {
+      position: absolute;
+      left: 20px;
+      top: 20px; }
+      @media (max-width: 767px) {
+        .visit-thumbnails .thumbnail .im {
+          position: static;
+          text-align: center;
+          padding-top: 9px; } }
+      .visit-thumbnails .thumbnail .im img, .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .visit-thumbnails .thumbnail .im div.img-circle {
+        width: 120px;
+        height: 120px; }
+      .visit-thumbnails .thumbnail .im div.img-circle {
+        background: #d2e1ec;
+        text-align: center; }
+        @media (max-width: 767px) {
+          .visit-thumbnails .thumbnail .im div.img-circle {
+            display: inline-block; } }
+        .visit-thumbnails .thumbnail .im div.img-circle .glyphicon {
+          color: #ffffff;
+          font-size: 80px;
+          margin-top: 20px; }
+  .visit-thumbnails .pagination {
+    margin-top: 20px; }
+  .visit-thumbnails h2 {
+    font-size: 20px; }
+  .visit-thumbnails a, .visit-thumbnails .treeview .selectable-item, .treeview .visit-thumbnails .selectable-item {
+    color: #353535; }
+  .visit-thumbnails .caption-buttons {
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    height: 35px; }
+  .visit-thumbnails .thumbnail-link {
+    -webkit-border-radius: 35px;
+    -khtml-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+    border-radius: 35px;
+    max-width: 35px;
+    height: 35px;
+    line-height: 37px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    margin-right: 3px;
+    background: #d2e1ec;
+    color: #353535;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+    -khtml-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    .visit-thumbnails .thumbnail-link:hover {
+      max-width: 170px; }
+    .visit-thumbnails .thumbnail-link .glyphicon {
+      width: 35px; }
+    .visit-thumbnails .thumbnail-link span.title {
+      padding-right: 10px; }
+  .visit-thumbnails .no-visits {
+    overflow: hidden;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    background: #ffffff;
+    text-align: center; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.navbar-user-card .dropdown-menu {
+  overflow: auto;
+  padding: 0;
+  font-size: 15px;
+  width: 420px;
+  background: #ffffff; }
+  .navbar-user-card .dropdown-menu .card-container {
+    background: #ffffff;
+    display: table;
+    width: 100%;
+    height: 136px;
+    padding: 0;
+    margin: 0; }
+    .navbar-user-card .dropdown-menu .card-container div.card-info {
+      padding-left: 136px;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      -webkit-box-sizing: border-box;
+      -khtml-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+      @media (max-width: 767px) {
+        .navbar-user-card .dropdown-menu .card-container div.card-info {
+          display: block;
+          padding-left: 9px; } }
+      .navbar-user-card .dropdown-menu .card-container div.card-info p {
+        margin: 0 0 8px 0;
+        line-height: 16px; }
+        @media (max-width: 767px) {
+          .navbar-user-card .dropdown-menu .card-container div.card-info p {
+            text-align: center; } }
+        .navbar-user-card .dropdown-menu .card-container div.card-info p.family-name {
+          font-weight: bold;
+          font-size: 16px; }
+        .navbar-user-card .dropdown-menu .card-container div.card-info p.name {
+          font-weight: bold;
+          margin: 0; }
+        .navbar-user-card .dropdown-menu .card-container div.card-info p.login {
+          color: #666;
+          margin: 0 0 2px 0; }
+        .navbar-user-card .dropdown-menu .card-container div.card-info p.points {
+          position: relative;
+          padding-left: 5px; }
+          @media (max-width: 767px) {
+            .navbar-user-card .dropdown-menu .card-container div.card-info p.points {
+              padding-bottom: 4px; } }
+          .navbar-user-card .dropdown-menu .card-container div.card-info p.points .glyphicon {
+            color: #FFDD2E;
+            text-shadow: -1px 0px 0px #877203; }
+          .navbar-user-card .dropdown-menu .card-container div.card-info p.points .caption {
+            position: relative;
+            top: -3px;
+            margin-left: 6px;
+            font-weight: bold; }
+        .navbar-user-card .dropdown-menu .card-container div.card-info p.spent {
+          margin: 0 0 6px 0; }
+    .navbar-user-card .dropdown-menu .card-container .im {
+      position: absolute;
+      left: 20px;
+      top: 20px; }
+      @media (max-width: 767px) {
+        .navbar-user-card .dropdown-menu .card-container .im {
+          position: static;
+          text-align: center;
+          padding: 12px; } }
+      .navbar-user-card .dropdown-menu .card-container .im img, .navbar-user-card .dropdown-menu .card-container .im div.img-circle {
+        width: 96px;
+        height: 96px; }
+      .navbar-user-card .dropdown-menu .card-container .im div.img-circle {
+        background: #d2e1ec;
+        text-align: center; }
+        @media (max-width: 767px) {
+          .navbar-user-card .dropdown-menu .card-container .im div.img-circle {
+            display: inline-block; } }
+        .navbar-user-card .dropdown-menu .card-container .im div.img-circle .glyphicon {
+          color: #ffffff;
+          font-size: 61.93548px;
+          margin-top: 13px; }
+  .navbar-user-card .dropdown-menu div.buttons {
+    background: #F6F6F6;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 3px 8px 7px 8px; }
+    .navbar-user-card .dropdown-menu div.buttons .btn-primary, .navbar-user-card .dropdown-menu div.buttons .photo-uploader .qq-upload-button, .photo-uploader .navbar-user-card .dropdown-menu div.buttons .qq-upload-button {
+      font-size: 16px;
+      padding: 4px 23px 4px;
+      margin-top: 3px; }
+
+.status-filter {
+  margin-bottom: 20px;
+  text-align: center; }
+  @media (max-width: 767px) {
+    .status-filter .status-filter-buttons {
+      display: none; } }
+  .status-filter .dropdown a, .status-filter .dropdown .treeview .selectable-item, .treeview .status-filter .dropdown .selectable-item {
+    display: block;
+    max-width: none; }
+  .status-filter .dropdown-menu {
+    width: 100%; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  padding: 6px 10px;
+  color: #353535;
+  line-height: 16px;
+  z-index: 100; }
+  .status-badge.left {
+    left: -4px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -khtml-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); }
+    .thumbnail .status-badge.left {
+      left: -2px; }
+  .status-badge.right {
+    right: -4px;
+    -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    -khtml-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4); }
+    .thumbnail .status-badge.right {
+      right: -2px; }
+  .status-badge.red {
+    background: #ef3a47;
+    color: #e7f1fa; }
+  .status-badge.gray {
+    background: #d2e1ec; }
+  .status-badge.yellow {
+    background: #FFDD2E; }
+  .status-badge.green {
+    background: #4DB748;
+    color: #e7f1fa; }
+
+.colored-cell {
+  border-bottom: 3px solid; }
+  .colored-cell.red {
+    color: #850b14;
+    border-bottom-color: #ef3a47; }
+  .colored-cell.gray {
+    color: #4881aa;
+    border-bottom-color: #d2e1ec; }
+  .colored-cell.yellow {
+    color: #615100;
+    border-bottom-color: #FFDD2E; }
+  .colored-cell.green {
+    color: #1f491d;
+    border-bottom-color: #4DB748; }
+
+@media (max-width: 400px) {
+  .enjoy_hint_label div {
+    font-size: 16px;
+    width: 80%;
+    position: fixed;
+    right: 20px; } }
+@media (min-width: 400px) {
+  .enjoy_hint_label div {
+    font-size: 16px;
+    width: 80%;
+    position: fixed;
+    right: 20px; } }
+@media (min-width: 768px) {
+  .enjoy_hint_label div {
+    font-size: 18px;
+    width: auto;
+    position: static;
+    left: auto; } }
+@media (min-width: 992px) {
+  .enjoy_hint_label div {
+    font-size: 22px; } }
+@media (max-width: 400px) {
+  .enjoyhint-step-1 .enjoy_hint_label div {
+    left: 20px;
+    right: auto; } }
+@media (min-width: 400px) {
+  .enjoyhint-step-1 .enjoy_hint_label div {
+    left: 20px;
+    right: auto; } }
+.enjoy_hint_label div p {
+  position: relative; }
+
+@media (max-width: 400px) {
+  .enjoyhint_next_btn {
+    margin-top: 190px; }
+    .enjoyhint-step-1 .enjoyhint_next_btn {
+      margin-top: 40px;
+      right: 30px;
+      left: auto !important; }
+    .enjoyhint-step-2 .enjoyhint_next_btn {
+      margin-top: 60px;
+      right: 30px;
+      left: auto !important; } }
+@media (min-width: 400px) {
+  .enjoyhint_next_btn {
+    margin-top: 165px; }
+    .enjoyhint-step-1 .enjoyhint_next_btn {
+      margin-top: 40px; }
+    .enjoyhint-step-2 .enjoyhint_next_btn {
+      margin-top: 60px; } }
+@media (min-width: 768px) {
+  .enjoyhint_next_btn {
+    margin-top: 0; } }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+  background: #edf8ed;
+  color: #353535; }
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection {
+  border-color: #4DB748;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -khtml-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(77, 183, 72, 0.6); }
+.select2-container--bootstrap .select2-dropdown {
+  border-color: #4DB748; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.create-dialog-btn-container {
+  text-align: right;
+  /* Small Devices, .visible-sm-* */ }
+  @media (max-width: 768px) {
+    .create-dialog-btn-container {
+      text-align: left;
+      margin-bottom: 10px; } }
+
+.add-dialog-form {
+  min-height: 474px; }
+
+.dialog-users-select img, .dialog-users-select .family-journal-header .im div.img-circle, .family-journal-header .im .dialog-users-select div.img-circle, .dialog-users-select .comment-list .media-left span div.img-circle, .comment-list .media-left span .dialog-users-select div.img-circle, .dialog-users-select .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .dialog-users-select div.img-circle, .dialog-users-select .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .dialog-users-select div.img-circle, .dialog-users-select .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .dialog-users-select div.img-circle, .dialog-users-select div.img-circle, .dialog-users-select .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .dialog-users-select div.img-circle, .dialog-users-select .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .dialog-users-select div.img-circle, .dialog-users-select .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .dialog-users-select div.img-circle, .dialog-users-select .message-item > .media-left div.img-circle, .message-item > .media-left .dialog-users-select div.img-circle, .dialog-users-select .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .dialog-users-select div.img-circle, .dialog-users-select .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .dialog-users-select div.img-circle {
+  width: 32px;
+  height: 32px; }
+.dialog-users-select div.img-circle {
+  background: #d2e1ec;
+  text-align: center; }
+  .dialog-users-select div.img-circle .glyphicon {
+    color: #ffffff;
+    font-size: 20.64516px;
+    margin-top: 4.33333px; }
+.dialog-users-select .media-body {
+  font-size: 14px;
+  line-height: 17px; }
+  .dialog-users-select .media-body span {
+    color: #9b9b9b; }
+
+.dialog-list {
+  margin-top: 8px;
+  margin-bottom: -16px;
+  overflow: hidden; }
+
+.dialog-item {
+  border-bottom: solid 1px #d2e1ec;
+  font-size: 14px;
+  line-height: 15px; }
+  .dialog-item:hover {
+    background: #edf8ed; }
+  .dialog-item > a, .treeview .dialog-item > .selectable-item {
+    padding: 8px;
+    display: block;
+    color: #353535;
+    text-decoration: none; }
+    .dialog-item > a *, .treeview .dialog-item > .selectable-item * {
+      text-decoration: none; }
+  .dialog-item > a > .media-left img, .treeview .dialog-item > .selectable-item > .media-left img, .dialog-item > a > .media-left .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .dialog-item > a > .media-left .dialog-last-message > .media > .media-left div.img-circle, .dialog-item > a > .media-left .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .dialog-item > a > .media-left div.img-circle {
+    width: 60px;
+    height: 60px; }
+  .dialog-item > a > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left div.img-circle {
+    background: #d2e1ec;
+    text-align: center; }
+    .dialog-item > a > .media-left div.img-circle .glyphicon, .treeview .dialog-item > .selectable-item > .media-left div.img-circle .glyphicon {
+      color: #ffffff;
+      font-size: 38.70968px;
+      margin-top: 9px; }
+  .dialog-item .dialog-subject {
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: -4px;
+    font-weight: bold; }
+  .dialog-item .dialog-user-count {
+    color: #9b9b9b; }
+  .dialog-item .dialog-last-message {
+    margin-top: 1px;
+    padding: 1px 6px 6px 6px; }
+    .dialog-item .dialog-last-message.new {
+      background: #d4eed3; }
+    .dialog-item .dialog-last-message > .media {
+      padding-bottom: 2px; }
+      .dialog-item .dialog-last-message > .media > .media-left {
+        height: 32px; }
+        .dialog-item .dialog-last-message > .media > .media-left img, .dialog-item .dialog-last-message > .media > .media-left div.img-circle {
+          width: 32px;
+          height: 32px;
+          margin-top: 2px;
+          position: relative;
+          top: 2px; }
+        .dialog-item .dialog-last-message > .media > .media-left div.img-circle {
+          background: #d2e1ec;
+          text-align: center; }
+          .dialog-item .dialog-last-message > .media > .media-left div.img-circle .glyphicon {
+            color: #ffffff;
+            font-size: 20.64516px;
+            margin-top: 4.33333px; }
+  .dialog-item .dialog-last-message-time {
+    color: #9b9b9b;
+    font-size: 13px;
+    height: 12px;
+    margin-top: -1px; }
+  .dialog-item .dialog-last-message-text {
+    height: 23px;
+    overflow: hidden;
+    line-height: 23px; }
+  .dialog-item .dialog-desc {
+    line-height: 18px;
+    margin-top: 6px; }
+
+.dialog-header {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 10px; }
+
+.message-author {
+  font-weight: bold; }
+
+.message-time {
+  color: #9b9b9b;
+  text-align: right; }
+  @media (max-width: 767px) {
+    .message-time {
+      text-align: left; } }
+
+.message-messages {
+  margin-bottom: -10px;
+  overflow: hidden; }
+
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.message-item {
+  padding: 8px; }
+  .message-item > .media-left img, .comment-list .message-item > .media-left span div.img-circle, .message-item > .media-left .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .message-item > .media-left div.img-circle, .message-item > .media-left .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .message-item > .media-left div.img-circle, .message-item > .media-left .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .message-item > .media-left div.img-circle, .message-item > .media-left .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .message-item > .media-left div.img-circle, .message-item > .media-left .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .message-item > .media-left div.img-circle, .message-item > .media-left .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .message-item > .media-left div.img-circle, .message-item > .media-left div.img-circle, .message-item > .media-left .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .message-item > .media-left div.img-circle, .message-item > .media-left .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .message-item > .media-left div.img-circle {
+    width: 60px;
+    height: 60px; }
+  .message-item > .media-left div.img-circle {
+    background: #d2e1ec;
+    text-align: center; }
+    .message-item > .media-left div.img-circle .glyphicon {
+      color: #ffffff;
+      font-size: 38.70968px;
+      margin-top: 9px; }
+
+.add-message-form {
+  margin-top: 7px;
+  padding-top: 10px;
+  border-top: dashed 3px #d2e1ec; }
+
+.dialog-users-list {
+  overflow: hidden;
+  max-height: 184px;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+  .dialog-users-list ul {
+    list-style: none;
+    margin-top: 15px;
+    margin-left: -10px;
+    padding: 0;
+    /* Extra Small Devices, .visible-xs-* */
+    /* Small Devices, .visible-sm-* */ }
+    @media (max-width: 767px) {
+      .dialog-users-list ul {
+        margin-top: 0; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .dialog-users-list ul {
+        margin-top: 0; } }
+    .dialog-users-list ul li {
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px; }
+  .dialog-users-list img, .dialog-users-list .family-journal-header .im div.img-circle, .family-journal-header .im .dialog-users-list div.img-circle, .dialog-users-list .comment-list .media-left span div.img-circle, .comment-list .media-left span .dialog-users-list div.img-circle, .dialog-users-list .task-thumbnails .thumbnail .im div.img-circle, .task-thumbnails .thumbnail .im .dialog-users-list div.img-circle, .dialog-users-list .visit-thumbnails .thumbnail .im div.img-circle, .visit-thumbnails .thumbnail .im .dialog-users-list div.img-circle, .dialog-users-list .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .im .dialog-users-list div.img-circle, .dialog-users-list .dialog-item > a > .media-left div.img-circle, .dialog-item > a > .media-left .dialog-users-list div.img-circle, .dialog-users-list .treeview .dialog-item > .selectable-item > .media-left div.img-circle, .treeview .dialog-item > .selectable-item > .media-left .dialog-users-list div.img-circle, .dialog-users-list .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .dialog-users-list div.img-circle, .dialog-users-list .message-item > .media-left div.img-circle, .message-item > .media-left .dialog-users-list div.img-circle, .dialog-users-list div.img-circle, .dialog-users-list .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .dialog-users-list div.img-circle, .dialog-users-list .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .dialog-users-list div.img-circle {
+    width: 32px;
+    height: 32px; }
+  .dialog-users-list div.img-circle {
+    background: #d2e1ec;
+    text-align: center; }
+    .dialog-users-list div.img-circle .glyphicon {
+      color: #ffffff;
+      font-size: 20.64516px;
+      margin-top: 4.33333px; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.all-journal-goods {
+  position: relative; }
+  .all-journal-goods .well {
+    background-color: white;
+    min-height: 41px;
+    overflow: hidden; }
+  .all-journal-goods .open-all-journal-goods-select-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+  .all-journal-goods ul {
+    padding: 0;
+    margin: -6px 22px -1px -7px;
+    overflow: hidden;
+    list-style: none; }
+    .all-journal-goods ul li {
+      float: left;
+      list-style: none;
+      padding: 0 6px;
+      margin: 5px 0 0 6px;
+      color: #555555;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px; }
+  .all-journal-goods .goods-delete {
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px; }
+  .all-journal-goods .prompt {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #9b9b9b; }
+
+.forum-theme-thumbnails-header {
+  color: #757575;
+  background: #d2e1ec;
+  padding-top: 3px; }
+
+.forum-theme-thumbnails {
+  border-top: solid 3px #d2e1ec;
+  margin-bottom: 20px; }
+  .forum-theme-thumbnails .thumbnail {
+    position: relative;
+    padding: 0;
+    margin-bottom: 0;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    display: table;
+    width: 100%;
+    height: 63px; }
+    @media (max-width: 767px) {
+      .forum-theme-thumbnails .thumbnail {
+        display: block;
+        height: auto; } }
+    .forum-theme-thumbnails .thumbnail .im {
+      position: absolute;
+      left: 10px;
+      top: 10px; }
+      .forum-theme-thumbnails .thumbnail .im img, .forum-theme-thumbnails .thumbnail .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .forum-theme-thumbnails .thumbnail .im div.img-circle, .forum-theme-thumbnails .thumbnail .im div.img-circle {
+        width: 40px;
+        height: 40px; }
+      .forum-theme-thumbnails .thumbnail .im div.img-circle {
+        background: #d2e1ec;
+        text-align: center; }
+        .forum-theme-thumbnails .thumbnail .im div.img-circle .fa {
+          color: #ffffff;
+          font-size: 26.66667px;
+          margin-top: 6.66667px; }
+    .forum-theme-thumbnails .thumbnail div.display-table {
+      display: table;
+      height: 100%;
+      width: 100%; }
+      .forum-theme-thumbnails .thumbnail div.display-table > div {
+        display: table-cell;
+        height: 100%;
+        width: 100%;
+        vertical-align: middle; }
+    .forum-theme-thumbnails .thumbnail div.data {
+      padding-left: 60px;
+      -webkit-box-sizing: border-box;
+      -khtml-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+      .forum-theme-thumbnails .thumbnail div.data a, .forum-theme-thumbnails .thumbnail div.data .treeview .selectable-item, .treeview .forum-theme-thumbnails .thumbnail div.data .selectable-item {
+        font-weight: bold; }
+      .forum-theme-thumbnails .thumbnail div.data .desc {
+        color: #828282;
+        font-size: 12px; }
+    .forum-theme-thumbnails .thumbnail .forum-theme-row {
+      height: 60px; }
+      .forum-theme-thumbnails .thumbnail .forum-theme-row > .row {
+        height: 100%; }
+        .forum-theme-thumbnails .thumbnail .forum-theme-row > .row > div {
+          height: 100%; }
+          .forum-theme-thumbnails .thumbnail .forum-theme-row > .row > div > div {
+            height: 100%;
+            vertical-align: middle; }
+  .forum-theme-thumbnails .no-themes {
+    overflow: hidden;
+    border: solid 3px #d2e1ec;
+    border-top: none;
+    background: #ffffff;
+    text-align: center; }
+
+.forum-messages-thumbnails .user-info {
+  border-left: solid 1px #d2e1ec;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+.forum-messages-thumbnails .list-view > div:nth-child(even) .thumbnail {
+  background: #f9fbfd; }
+.forum-messages-thumbnails .thumbnail {
+  border: solid 3px #d2e1ec;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0; }
+  .forum-messages-thumbnails .thumbnail .im {
+    margin-bottom: 10px; }
+    .forum-messages-thumbnails .thumbnail .im img, .forum-messages-thumbnails .thumbnail .navbar-user-card .dropdown-menu .card-container .im div.img-circle, .navbar-user-card .dropdown-menu .card-container .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im .dialog-item .dialog-last-message > .media > .media-left div.img-circle, .dialog-item .dialog-last-message > .media > .media-left .forum-messages-thumbnails .thumbnail .im div.img-circle, .forum-messages-thumbnails .thumbnail .im div.img-circle {
+      width: 96px;
+      height: 96px; }
+    .forum-messages-thumbnails .thumbnail .im div.img-circle {
+      background: #d2e1ec;
+      text-align: center; }
+      @media (max-width: 767px) {
+        .forum-messages-thumbnails .thumbnail .im div.img-circle {
+          display: inline-block; } }
+      .forum-messages-thumbnails .thumbnail .im div.img-circle .glyphicon {
+        color: #ffffff;
+        font-size: 61.93548px;
+        margin-top: 13px; }
+.forum-messages-thumbnails .forum-message-row h2 {
+  margin-bottom: 3px; }
+.forum-messages-thumbnails .forum-message-row .message-info {
+  margin-bottom: 12px;
+  font-size: 85%; }
+.forum-messages-thumbnails .forum-message-row .message-content {
+  word-wrap: break-word; }
+
+.forum-create-message-container {
+  border: solid 3px #d2e1ec;
+  background: #fff; }
+
+/*# sourceMappingURL=style.css.map */

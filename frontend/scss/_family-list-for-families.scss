@@ -1,0 +1,92 @@
+@import "variables";
+@import "css3-mixins";
+
+.family-list-for-families {
+
+  .list-view .row:first-child .col-md-12 div.item {
+    overflow: hidden;
+
+    @media(min-width: 992px) {
+      &:nth-child(3n + 1) {
+        clear: left;
+      }
+    }
+  }
+
+  .thumbnail {
+    $thumbnail: &;
+
+    $img-radius: 166px;
+    $img-margin: 20px;
+
+    position: relative;
+    padding: 0;
+    border: $main-border;
+    @include border-radius(0);
+    min-height: $img-radius + $img-margin;
+    color: $text-color;
+
+    &:hover {
+      border-color: $second-color;
+      text-decoration: none;
+    }
+
+    // Фото
+    .im {
+      position: absolute;
+      left: 50%;
+      margin-left: -1*$img-radius/2;
+      top: $img-margin;
+
+      img {
+        width: $img-radius;
+        height: $img-radius;
+      }
+
+      div.img-circle {
+        @extend img;
+        background: $border-color;
+        text-align: center;
+
+        @media(max-width:767px) {
+          display: inline-block;
+        }
+
+        .glyphicon {
+          color: #ffffff;
+          font-size: $img-radius*2/3.1;
+          margin-top: ($img-radius - $img-radius*2/3)/2 - 3px;
+        }
+      }
+    }
+
+    .memo {
+      margin-top: $img-radius + $img-margin*2;
+      padding: 0 10px;
+
+      h1 {
+        font-size: 20px;
+        padding-bottom: 3px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        text-decoration: none;
+
+        @at-root #{$thumbnail}:hover p {
+          text-decoration: none;
+        }
+      }
+
+      h1, p {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .input-group .btn {
+    padding: 4px 33px;
+  }
+}
